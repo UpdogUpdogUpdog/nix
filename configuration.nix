@@ -104,12 +104,6 @@ in
   # Fish
   programs.fish.enable = true;
   programs.fish.interactiveShellInit = "neofetch";
-  programs.fish.shellAliases.rebuild = ''
-    sudo nixos-rebuild switch -I nixos-config='/home/updogupdogupdog/Git Repositories/nix/configuration.nix' \
-      && git -C '/home/updogupdogupdog/Git Repositories/nix' add . \
-      && git -C '/home/updogupdogupdog/Git Repositories/nix' commit -am "rebuild: $(date +%F_%T)" \
-      && git -C '/home/updogupdogupdog/Git Repositories/nix' push
-  '';
 
   # Default shell for all users
   users.defaultUserShell = pkgs.fish;
@@ -148,6 +142,17 @@ in
         userName = "Updog";
         userEmail = "me@updog.cool";
     };
+    programs.fish = {
+      functions.rebuild = ''
+        function rebuild
+          sudo nixos-rebuild switch -I nixos-config='/home/updogupdogupdog/Git Repositories/nix/configuration.nix'
+          and git -C '/home/updogupdogupdog/Git Repositories/nix' add .
+          and git -C '/home/updogupdogupdog/Git Repositories/nix' commit -am "Rebuild: \$(date +%F_%T)"
+          and git -C '/home/updogupdogupdog/Git Repositories/nix' push
+        end
+      '';
+    };
+
     
     # The state version is required and should stay at the version you
     # originally installed.
