@@ -15,7 +15,7 @@ let
 in
 {
   imports = [
-    ./hardware-configuration.nix
+    /etc/nixos/hardware-configuration.nix
     (import "${home-manager}/nixos")
   ];
 
@@ -62,7 +62,7 @@ in
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  services.desktopManager.plasma5.enable = true;
 
   # Remote Desktop via XRDP
   services.xrdp.enable = true;
