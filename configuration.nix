@@ -187,7 +187,16 @@ in
     mlocate
     thefuck
     vscode
+    1password
+    1password-cli
   ];
+
+  # Brave Extensions
+  environment.etc."brave/policies/managed/1password.json".text = builtins.toJSON {
+  ExtensionInstallForcelist = [
+    "aeblfdkhhhdcdjpifhhbdiojplfjncoa;https://clients2.google.com/service/update2/crx"
+  ];
+};
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
