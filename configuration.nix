@@ -100,6 +100,11 @@ in
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  # Filesystem
+  systemd.tmpfiles.rules = [
+    "d /data 0755 root root -"
+  ];
+
   # Shells
   # Fish
   programs.fish.enable = true;
