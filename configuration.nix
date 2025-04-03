@@ -187,8 +187,8 @@ in
     mlocate
     thefuck
     vscode
-    1password
-    1password-cli
+    "1password"
+    "1password-cli"
   ];
 
   # Brave Extensions
