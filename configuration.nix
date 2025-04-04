@@ -60,7 +60,7 @@ in
   services.xserver.enable = true;
   services.xserver.xautolock.time = 0;
 
-  programs.command-not-found.enable = false; 
+  programs.command-not-found.enable = true; 
 
 
   # Enable the KDE Plasma Desktop Environment.
