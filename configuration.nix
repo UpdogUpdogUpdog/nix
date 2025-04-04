@@ -134,8 +134,16 @@ in
     ];
   };
 
-  home-manager.users.updogupdogupdog = { ... }: {
-
+  home-manager.users.updogupdogupdog = { ... }:  let
+    fetchSSHKeyScript = pkgs.writeShellScript "fetch-ssh-key" ''
+      set -e
+      mkdir -p ~/.ssh
+      ${pkgs._1password-cli}/bin/op read "op://Private/Updog GitHub SSH Key/id_ed25519" > ~/.ssh/id_ed25519
+      ${pkgs._1password-cli}/bin/op read "op://Private/Updog GitHub SSH Key/id_ed25519.pub" > ~/.ssh/id_ed25519.pub
+      chmod 600 ~/.ssh/id_ed25519
+      chmod 644 ~/.ssh/id_ed25519.pub
+    '';
+  in {
     # Packages
     home.packages = with pkgs; [ steam ];
 
@@ -157,7 +165,20 @@ in
       '';
     };
 
-    
+    systemd.user.services.ssh-key-from-1password = {
+      Unit = {
+        Description = "Fetch SSH key from 1Password CLI";
+        After = [ "graphical-session.target" ];
+      };
+      Service = {
+        Type = "oneshot";
+        ExecStart = [ fetchSSHKeyScript ];
+      };
+      Install = {
+        WantedBy = [ "default.target" ];
+      };
+    };
+
     # The state version is required and should stay at the version you
     # originally installed.
     home.stateVersion = "24.11";
