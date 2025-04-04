@@ -23,6 +23,7 @@
         };
       };
     };
+  };
 
   homeConfigurations = {
     updogupdogupdog = home-manager.lib.homeManagerConfiguration {
@@ -41,4 +42,4 @@
       extraSpecialArgs = { inherit inputs; };
     };
   };
-};
+}
