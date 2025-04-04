@@ -208,6 +208,7 @@ in
     vscode
     _1password-cli
     _1password-gui
+    home-manager
   ];
 
   # Brave Extensions
