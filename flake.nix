@@ -23,23 +23,23 @@
         };
       };
     };
-  };
 
-  homeConfigurations = {
-    updogupdogupdog = home-manager.lib.homeManagerConfiguration {
-      pkgs = import nixpkgs {
-        system = "x86_64-linux";
-        config.allowUnfree = true;
+    homeConfigurations = {
+      updogupdogupdog = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+          config.allowUnfree = true;
+        };
+        modules = [
+          {
+            home.username = "updogupdogupdog";
+            home.homeDirectory = "/home/updogupdogupdog";
+          }
+          ./home/updogupdogupdog/x1-carbon.nix
+          # ./home/updogupdogupdog/minimal.nix
+        ];
+        extraSpecialArgs = { inherit inputs; };
       };
-      modules = [
-        {
-          home.username = "updogupdogupdog";
-          home.homeDirectory = "/home/updogupdogupdog";
-        }
-        ./home/updogupdogupdog/x1-carbon.nix
-        # ./home/updogupdogupdog/minimal.nix
-      ];
-      extraSpecialArgs = { inherit inputs; };
     };
   };
 }
