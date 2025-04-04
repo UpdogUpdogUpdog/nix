@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
 set -l repo ~/Git\ Repositories/nix
-set -l hostname (hostname)
+set -l host (hostname)
 set -l user updogupdogupdog
 set -l do_nixos 1
 set -l do_home 1
@@ -24,7 +24,7 @@ echo "🔍 Validating config before rebuild..."
 # Test nixos build
 if test $do_nixos -eq 1
     echo "→ Testing NixOS build..."
-    if ! nixos-rebuild build --flake $repo#$hostname 2> /tmp/nixos-build.log
+    if ! nixos-rebuild build --flake $repo#$host 2> /tmp/nixos-build.log
         echo "❌ NixOS build failed:"
         tail -n 30 /tmp/nixos-build.log | sed '/^$/d' | head -n 15
         exit 1
