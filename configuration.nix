@@ -137,6 +137,8 @@ in
   home-manager.users.updogupdogupdog = { ... }:  let
     fetchSSHKeyScript = pkgs.writeShellScript "fetch-ssh-key" ''
       set -e
+      
+      env | sort > /tmp/env.systemd.txt
 
       echo "[ssh-key-from-1password] Waiting for 1Password native messaging socket..."
 
