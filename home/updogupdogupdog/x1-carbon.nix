@@ -72,4 +72,4 @@ systemd.user.services.ssh-key-from-1password = {
 # originally installed.
 home.stateVersion = "24.11";
 
-};
+}
