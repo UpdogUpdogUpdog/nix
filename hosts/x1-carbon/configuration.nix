@@ -2,16 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, ... }:
-
-let
-  pkgs = import <nixpkgs> {
-    config.allowUnfree = true;
-    system = builtins.currentSystem;
-  };
-in
-{
-  imports = [];
+{ config, lib, pkgs, ... }: {
 
   nixpkgs = {
     config.allowUnfree = true;
