@@ -60,6 +60,9 @@ in
   services.xserver.enable = true;
   services.xserver.xautolock.time = 0;
 
+  programs.command-not-found.enable = false; 
+
+
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
