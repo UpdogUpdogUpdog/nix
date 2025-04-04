@@ -1,4 +1,4 @@
-home-manager.users.updogupdogupdog = { ... }:  let
+{ config, pkgs, ... }:  let
 fetchSSHKeyScript = pkgs.writeShellScript "fetch-ssh-key" ''
     set -e
     
