@@ -1,0 +1,24 @@
+# Nix build artifacts
+/result
+/result-*
+/flake.lock.backup
+/nix-shell.*
+
+# VS Code and JetBrains IDE stuff
+.vscode/
+.idea/
+
+# Systemd user service logs if they get got
+*.log
+
+# Anything 1Password might drop if used insecurely
+*.opvault
+*.1pif
+secrets.txt
+
+# Editor swap/temp files
+*~
+*.swp
+*.swo
+*.tmp
+*.bak
