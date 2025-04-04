@@ -137,7 +137,7 @@ in
   home-manager.users.updogupdogupdog = { ... }:  let
     fetchSSHKeyScript = pkgs.writeShellScript "fetch-ssh-key" ''
       set -e
-      
+
       echo "[ssh-key-from-1password] Waiting for 1Password native messaging socket..."
 
       SOCKET_PATH="$XDG_RUNTIME_DIR/1password/native-messaging-socket"
@@ -185,12 +185,18 @@ in
     systemd.user.services.ssh-key-from-1password = {
       Unit = {
         Description = "Fetch SSH key from 1Password CLI";
-        After = [ "graphical-session.target" ];
+        After = [ "default.target" ];
       };
+
       Service = {
         Type = "oneshot";
+        Environment = [
+          "XDG_RUNTIME_DIR=%t"
+          "PATH=${pkgs._1password-cli}/bin:/run/wrappers/bin:/etc/profiles/per-user/updogupdogupdog/bin:/run/current-system/sw/bin"
+        ];
         ExecStart = [ fetchSSHKeyScript ];
       };
+
       Install = {
         WantedBy = [ "default.target" ];
       };
