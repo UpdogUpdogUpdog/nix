@@ -137,6 +137,7 @@ in
   home-manager.users.updogupdogupdog = { ... }:  let
     fetchSSHKeyScript = pkgs.writeShellScript "fetch-ssh-key" ''
       set -e
+      sleep 5
       mkdir -p ~/.ssh
       ${pkgs._1password-cli}/bin/op read "op://Private/Updog GitHub SSH Key/id_ed25519" > ~/.ssh/id_ed25519
       ${pkgs._1password-cli}/bin/op read "op://Private/Updog GitHub SSH Key/id_ed25519.pub" > ~/.ssh/id_ed25519.pub
