@@ -60,9 +60,7 @@ in
   services.xserver.enable = true;
   services.xserver.xautolock.time = 0;
 
-  programs.command-not-found.enable = false; 
-  programs.nix-index.enable = true;
-  programs.nix-index.enableFishIntegration = true;
+
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
@@ -109,10 +107,13 @@ in
     "d /data 0755 root root -"
   ];
 
-  # Shells
+  # Shell Stuff
   # Fish
   programs.fish.enable = true;
   programs.fish.interactiveShellInit = "neofetch";
+  programs.command-not-found.enable = false; 
+  programs.nix-index.enable = true;
+  programs.nix-index.enableFishIntegration = true;
 
   # Default shell for all users
   users.defaultUserShell = pkgs.fish;
