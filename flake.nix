@@ -1,5 +1,5 @@
 {
-  description = "Updog's NixOS + Home Manager config (24.11 stable-ish)";
+  description = "Updog's NixOS + Home Manager config";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
@@ -15,8 +15,8 @@
         system = "x86_64-linux";
         modules = [
           ./hosts/x1-carbon/configuration.nix
-          /etc/nixos/hardware-configuration.nix
-          home-manager.nixosModules.home-manager
+          ./hosts/x1-carbon/hardware-configuration.nix
+          ./modules/common.nix
         ];
         specialArgs = {
           inherit inputs;
