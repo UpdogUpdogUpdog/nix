@@ -28,6 +28,10 @@
       updogupdogupdog = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         modules = [
+          {
+            home.username = "updogupdogupdog";
+            home.homeDirectory = "/home/updogupdogupdog";
+          }
           ./home/updogupdogupdog/x1-carbon.nix
           #./home/updogupdogupdog/minimal.nix
         ];
