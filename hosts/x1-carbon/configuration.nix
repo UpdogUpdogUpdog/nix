@@ -4,9 +4,7 @@
 
 { config, lib, ... }:
 
-#home-manager nixos module Installation
 let
-
   pkgs = import <nixpkgs> {
     config.allowUnfree = true;
     system = builtins.currentSystem;
@@ -64,11 +62,11 @@ in
   services.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
 
-  # Remote Desktop via XRDP
-  services.xrdp.enable = true;
-  services.xrdp.defaultWindowManager = "startplasma-x11";
-  services.xrdp.audio.enable = true;
-  services.xrdp.openFirewall = true;
+  ## Remote Desktop via XRDP
+  #services.xrdp.enable = true;
+  #services.xrdp.defaultWindowManager = "startplasma-x11";
+  #services.xrdp.audio.enable = true;
+  #services.xrdp.openFirewall = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -94,8 +92,6 @@ in
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
-
-
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -139,8 +135,8 @@ in
 
 
   # Enable automatic login for the user.
-  #services.displayManager.autoLogin.enable = true;
-  #services.displayManager.autoLogin.user = "updogupdogupdog";
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "updogupdogupdog";
 
   # Allow wheel users to sudo without password entry
   security.sudo.wheelNeedsPassword = false;
@@ -162,6 +158,7 @@ in
     _1password-cli
     _1password-gui
     home-manager
+    ncdu
   ];
 
   # Brave Extensions
@@ -194,9 +191,6 @@ in
   services.locate.package = pkgs.mlocate;
   services.locate.localuser = null;
   services.locate.enable = true;
-
-  # QEMU guest agent
-  services.qemuGuest.enable = true; 
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
