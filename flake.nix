@@ -28,8 +28,8 @@
       updogupdogupdog = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         modules = [
-          #./home/updogupdogupdog/x1-carbon.nix
-          ./home/updogupdogupdog/minimal.nix
+          ./home/updogupdogupdog/x1-carbon.nix
+          #./home/updogupdogupdog/minimal.nix
         ];
         extraSpecialArgs = { inherit inputs; };
       };
