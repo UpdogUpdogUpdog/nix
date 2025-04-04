@@ -87,6 +87,11 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  #Bluetooth
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true; # GTK UI for managing BT (works fine in KDE too)
+  hardware.bluetooth.powerOnBoot = true;
+
   # Filesystem
   systemd.tmpfiles.rules = [
     "d /data 0755 root root -"
