@@ -60,8 +60,9 @@ in
   services.xserver.enable = true;
   services.xserver.xautolock.time = 0;
 
-  programs.command-not-found.enable = true; 
-
+  programs.command-not-found.enable = false; 
+  programs.nix-index.enable = true;
+  programs.nix-index.enableFishIntegration = true;
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
