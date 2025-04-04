@@ -129,6 +129,15 @@
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "updogupdogupdog";
 
+  # Fingerprint reader
+  services.fprintd.enable = true;
+  security.pam.services = {
+    login.fprintAuth = true;
+    sudo.fprintAuth = true;
+    sddm.fprintAuth = true;  # If you're using SDDM with KDE Plasma
+  };
+
+
   # Allow wheel users to sudo without password entry
   security.sudo.wheelNeedsPassword = false;
 
