@@ -1,3 +1,5 @@
+#This is a minimal home-manager config we can switch to just for troubleshooting build problems and other things.
+
 { config, pkgs, ... }:
 
 {

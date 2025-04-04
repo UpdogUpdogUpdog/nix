@@ -9,16 +9,10 @@ programs.git = {
     userName = "Updog";
     userEmail = "me@updog.cool";
 };
-programs.fish = {
-    functions.rebuild = ''
-    function rebuild
-        sudo nixos-rebuild switch -I nixos-config='/home/updogupdogupdog/Git Repositories/nix/configuration.nix'
-        and git -C '/home/updogupdogupdog/Git Repositories/nix' add .
-        and git -C '/home/updogupdogupdog/Git Repositories/nix' commit -am "Rebuild: \$(date +%F_%T)"
-        and git -C '/home/updogupdogupdog/Git Repositories/nix' push
-    end
-    '';
-};
+
+#Files
+home.file.".config/fish/functions/rebuild.fish".source = ./scripts/rebuild.fish;
+
 
 # The state version is required and should stay at the version you
 # originally installed.
