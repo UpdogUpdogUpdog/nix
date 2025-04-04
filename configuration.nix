@@ -141,7 +141,6 @@ in
 
     # Programs
     programs.firefox.enable = false;
-    programs.thefuck.enable = true;
     programs.git = {
         enable = true;
         userName = "Updog";
@@ -185,7 +184,6 @@ in
     fish
     kitty
     mlocate
-    thefuck
     vscode
     _1password-cli
     _1password-gui
