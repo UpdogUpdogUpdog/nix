@@ -89,7 +89,7 @@
 
   #Bluetooth
   hardware.bluetooth.enable = true;
-  services.blueman.enable = true; # GTK UI for managing BT (works fine in KDE too)
+  #services.blueman.enable = true; # GTK UI for managing BT (works fine in KDE too)
   hardware.bluetooth.powerOnBoot = true;
 
   # Filesystem
@@ -99,8 +99,14 @@
 
   # Shell Stuff
   # Fish
-  programs.fish.enable = true;
-  programs.fish.interactiveShellInit = "neofetch";
+  programs.fish = {
+    enable = true;
+    interactiveShellInit = "neofetch";
+    shellInit = ''
+      fish_add_path ~/.local/bin
+    '';
+  };
+
   programs.command-not-found.enable = false; 
   programs.nix-index.enable = true;
   programs.nix-index.enableFishIntegration = true;
@@ -164,6 +170,7 @@
     _1password-gui
     home-manager
     ncdu
+    ventoy
   ];
 
   # Brave Extensions
