@@ -29,7 +29,7 @@ gtk = {
 };
 
 #Files
-home.file.".config/fish/functions/rebuild.fish".source = ./scripts/rebuild.fish;
+programs.fish.functions.rebuild = builtins.readFile ./scripts/rebuild.fish;
 
 
 # The state version is required and should stay at the version you
