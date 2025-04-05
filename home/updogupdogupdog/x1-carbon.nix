@@ -1,9 +1,6 @@
 { config, pkgs, ... }: {
 
 # Packages
-home.packages = with pkgs; [
-  steam
-  ];
 
 # Programs
 programs.firefox.enable = false;

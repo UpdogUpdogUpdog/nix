@@ -169,6 +169,35 @@
     sddm.fprintAuth = true;  # If you're using SDDM with KDE Plasma
   };
 
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+
+    extraPackages = with pkgs; [
+      intel-media-driver   # Modern Intel Vulkan (ANV)
+      vaapiIntel           # Just in case
+      libvdpau-va-gl       # Video acceleration fallback
+    ];
+
+    extraPackages32 = with pkgs.pkgsi686Linux; [
+      intel-media-driver
+      vaapiIntel
+      libvdpau-va-gl
+      mesa                 # 32-bit OpenGL support
+      vulkan-loader        # 32-bit Vulkan ICD loader
+    ];
+  };
+
+  programs.steam = {
+    enable = true;
+    package = pkgs.steam.override {
+      extraPkgs = pkgs: with pkgs; [
+        libglvnd           # GL vendor-neutral dispatch library
+      ];
+    };
+  };
+
+  hardware.steam-hardware.enable = true;
 
   # Allow wheel users to sudo without password entry
   security.sudo.wheelNeedsPassword = false;
