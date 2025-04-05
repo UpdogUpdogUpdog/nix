@@ -86,6 +86,27 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
+  #services.xserver.libinput = {
+  #  enable = true;
+  #  touchpad = {
+  #    disableWhileTyping = true;
+  #    naturalScrolling = true; 
+  #    palmDetection = true;
+  #  };
+  #};
+
+  environment.etc."X11/xorg.conf.d/99-libinput-custom.conf".text = ''
+    Section "InputClass"
+        Identifier "Custom libinput config"
+        MatchDriver "libinput"
+        MatchIsTouchpad "on"
+        Option "DisableWhileTyping" "true"
+        Option "PalmDetection" "true"
+        Option "PalmMinWidth" "8"
+        Option "PalmMinZ" "100"
+    EndSection
+  '';
+
 
   #Bluetooth
   hardware.bluetooth.enable = true;
@@ -170,7 +191,7 @@
     _1password-gui
     home-manager
     ncdu
-    ventoy-full
+    kdePackages.isoimagewriter
   ];
 
   # Brave Extensions
