@@ -170,7 +170,7 @@
     _1password-gui
     home-manager
     ncdu
-    ventoy
+    ventoy-full
   ];
 
   # Brave Extensions
