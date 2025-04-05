@@ -156,7 +156,6 @@
     ];
   };
 
-
   # Enable automatic login for the user.
   services.displayManager.autoLogin.enable = false;
   services.displayManager.autoLogin.user = "updogupdogupdog";
@@ -221,6 +220,7 @@
     home-manager
     ncdu
     kdePackages.isoimagewriter
+    power-profiles-daemon
   ];
 
   # Brave Extensions
