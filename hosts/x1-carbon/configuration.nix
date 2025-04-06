@@ -169,7 +169,9 @@
   security.pam.services = {
     login.fprintAuth = false;
     sudo.fprintAuth = true;
-    sddm.fprintAuth = true;  # If you're using SDDM with KDE Plasma
+    sddm.fprintAuth = false;  # If you're using SDDM with KDE Plasma
+    kscreenlocker.fprintAuth = true;
+
   };
 
   hardware.graphics = {
