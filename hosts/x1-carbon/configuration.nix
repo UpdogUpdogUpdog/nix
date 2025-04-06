@@ -167,7 +167,7 @@
   # Fingerprint reader
   services.fprintd.enable = true;
   security.pam.services = {
-    login.fprintAuth = true;
+    login.fprintAuth = false;
     sudo.fprintAuth = true;
     sddm.fprintAuth = true;  # If you're using SDDM with KDE Plasma
   };
