@@ -51,7 +51,8 @@ end
 
 if test $do_home -eq 1
     echo "→ Switching Home Manager..."
-    home-manager switch --flake $repo#$user -b bak
+    mv /home/$user/.gtkrc-2.0 /home/$user/.gtkrc-2.0.bak
+    home-manager switch --flake $repo#$user
 end
 
 # Auto commit
