@@ -53,8 +53,9 @@ if test $do_home -eq 1
     echo "→ Switching Home Manager..."
     echo "Checking for /home/$user/.gtkrc-20"
     ll /home/$user/.gtkrc-2.0*
-    cp /home/$user/.gtkrc-2.0 /home/$user/.gtkrc-2.0.bak
-    rm -f /home/$user/.gtkrc-2.0
+    mv /home/$user/.gtkrc-2.0 /home/$user/.gtkrc-2.0.bak
+    echo "Removed?"
+    ll /home/$user/.gtkrc-2.0*
     home-manager switch --flake $repo#$user
 end
 
