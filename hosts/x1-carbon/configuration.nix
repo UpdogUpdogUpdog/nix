@@ -127,7 +127,6 @@
       fish_add_path ~/.local/bin
     '';
     shellAliases = {
-      home-manager = "home-manager -b bak";
       ll = "ls -alh";
     };
   };
