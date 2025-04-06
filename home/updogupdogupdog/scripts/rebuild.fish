@@ -51,7 +51,7 @@ end
 
 if test $do_home -eq 1
     echo "→ Switching Home Manager..."
-    home-manager switch --flake $repo#$user
+    home-manager switch --flake $repo#$user -b bak
 end
 
 # Auto commit
