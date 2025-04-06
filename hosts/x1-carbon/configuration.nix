@@ -171,7 +171,20 @@
     sudo.fprintAuth = true;
     sddm.fprintAuth = false;  # If you're using SDDM with KDE Plasma
     kscreenlocker.fprintAuth = true;
+  };
 
+  programs.auto-cpufreq.enable = true;
+  # optionally, you can configure your auto-cpufreq settings, if you have any
+  programs.auto-cpufreq.settings = {
+    charger = {
+      governor = "performance";
+      turbo = "auto";
+    };
+
+    battery = {
+      governor = "powersave";
+      turbo = "never";
+    };
   };
 
   hardware.graphics = {
@@ -206,7 +219,7 @@
 
 
 
-  services.power-profiles-daemon.enable = true;
+  services.power-profiles-daemon.enable = false;
 
   programs.steam = {
     enable = true;

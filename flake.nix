@@ -12,9 +12,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+    auto-cpufreq = {
+      url = "github:AdnanHodzic/auto-cpufreq";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, plasma-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, plasma-manager, auto-cpufreq, ... }@inputs:
   let
     overlays = [
       (import ./overlays/power-profiles-patch.nix)
@@ -27,6 +31,7 @@
           ./hosts/x1-carbon/configuration.nix
           ./hosts/x1-carbon/hardware-configuration.nix
           ./modules/common.nix
+          auto-cpufreq.nixosModules.default
         ];
         specialArgs = {
           inherit inputs overlays;
