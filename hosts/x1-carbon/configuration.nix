@@ -194,6 +194,15 @@
   services.dbus.packages = [
     pkgs.power-profiles-daemon
   ];
+  
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly"; # or "daily", "monthly", 
+    options = "--delete-older-than 7d"; # optional, for keeping some history
+  };
+
+
 
   services.power-profiles-daemon.enable = true;
 
