@@ -17,6 +17,8 @@ programs.plasma = {
   };
 };
 
+home.shellAliases.home-manager = "home-manager -b hm.bak";
+
 gtk = {
   enable = true;
   theme = {
