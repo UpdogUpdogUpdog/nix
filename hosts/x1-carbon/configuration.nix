@@ -187,6 +187,11 @@
     ];
   };
 
+  services.dbus.packages = [
+    pkgs.power-profiles-daemon
+  ];
+
+
   programs.steam = {
     enable = true;
     package = pkgs.steam.override {
