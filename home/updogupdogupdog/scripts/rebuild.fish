@@ -34,7 +34,7 @@ end
 # Test home-manager build
 if test $do_home -eq 1
     echo "→ Testing Home Manager build..."
-    if ! home-manager build --flake $repo#$user@$hostname 2> /tmp/home-build.log
+    if ! home-manager build --flake $repo#$user@$host 2> /tmp/home-build.log
         echo "❌ Home Manager build failed:"
         tail -n 30 /tmp/home-build.log | sed '/^$/d' | head -n 15
         exit 1
@@ -46,7 +46,7 @@ echo "✅ Build successful. Applying changes..."
 # Switch!
 if test $do_nixos -eq 1
     echo "→ Switching NixOS..."
-    sudo nixos-rebuild switch --flake $repo#$hostname
+    sudo nixos-rebuild switch --flake $repo#$host
 end
 
 if test $do_home -eq 1
@@ -56,21 +56,21 @@ if test $do_home -eq 1
     mv /home/$user/.gtkrc-2.0 /home/$user/.gtkrc-2.0.bak
     echo "Removed?"
     ll /home/$user/.gtkrc-2.0*
-    home-manager switch --flake $repo#$user@$hostname
+    home-manager switch --flake $repo#$user@$host
 end
 
 # Prompt for commit message
-echo "Enter commit message [default: auto: successful rebuild on (hostname)]: "
+echo "Enter commit message [default: auto: successful rebuild on $host]: "
 read user_msg
 if test -z "$user_msg"
-    set user_msg "auto: successful rebuild on (hostname)"
+    set user_msg "auto: successful rebuild on $host"
 end
 
 # Auto commit
 echo "📦 Committing and pushing config changes..."
 cd $repo
 git add .
-git commit -m "$user_msg"
+git commit -m "$host: $user_msg"
 and git push
 cd -
 
