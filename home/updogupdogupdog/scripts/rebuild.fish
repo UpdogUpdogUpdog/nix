@@ -59,11 +59,19 @@ if test $do_home -eq 1
     home-manager switch --flake $repo#$user
 end
 
+# Prompt for commit message
+echo -n "Enter commit message [default: auto: successful rebuild on (hostname)]: "
+read user_msg
+if test -z "$user_msg"
+    set user_msg "auto: successful rebuild on (hostname)"
+end
+
 # Auto commit
 echo "📦 Committing and pushing config changes..."
 cd $repo
 git add .
-git commit -m "auto: successful rebuild on $hostname"
-git push
+git commit -m "$user_msg"
+and git push
+cd -
 
 echo "🎉 Rebuild complete!"
