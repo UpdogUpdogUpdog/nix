@@ -34,7 +34,7 @@ end
 # Test home-manager build
 if test $do_home -eq 1
     echo "→ Testing Home Manager build..."
-    if ! home-manager build --flake  2> /tmp/home-build.log
+    if ! home-manager build --flake $repo#$user@$hostname 2> /tmp/home-build.log
         echo "❌ Home Manager build failed:"
         tail -n 30 /tmp/home-build.log | sed '/^$/d' | head -n 15
         exit 1
@@ -60,7 +60,7 @@ if test $do_home -eq 1
 end
 
 # Prompt for commit message
-echo -n "Enter commit message [default: auto: successful rebuild on (hostname)]: "
+echo "Enter commit message [default: auto: successful rebuild on (hostname)]: "
 read user_msg
 if test -z "$user_msg"
     set user_msg "auto: successful rebuild on (hostname)"
