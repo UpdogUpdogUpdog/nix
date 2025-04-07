@@ -37,6 +37,14 @@
           inherit inputs overlays;
         };
       };
+      vm = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/common/configuration.nix
+          ./hosts/vm/configuration.nix
+          ./hosts/vm/hardware-configuration.nix
+        ];
+      };
     };
 
     homeConfigurations = {
