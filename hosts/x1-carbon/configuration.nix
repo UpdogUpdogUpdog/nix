@@ -43,6 +43,7 @@
     kscreenlocker.fprintAuth = true;
   };
 
+  services.tlp.enable = true;
   programs.auto-cpufreq.enable = false;
   # optionally, you can configure your auto-cpufreq settings, if you have any
   programs.auto-cpufreq.settings = {
