@@ -184,7 +184,6 @@
     home-manager
     ncdu
     kdePackages.isoimagewriter
-    tabby
   ];
 
   # Brave Extensions

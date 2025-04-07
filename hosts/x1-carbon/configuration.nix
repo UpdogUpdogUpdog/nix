@@ -8,18 +8,20 @@
   networking.hostName = "x1-carbon"; # Define your hostname.
 
 
-  environment.etc."X11/xorg.conf.d/99-libinput-custom.conf".text = ''
-    Section "InputClass"
-        Identifier "Custom libinput config"
-        MatchDriver "libinput"
-        MatchIsTouchpad "on"
-        Option "DisableWhileTyping" "true"
-        Option "PalmDetection" "true"
-        Option "PalmMinWidth" "8"
-        Option "PalmMinZ" "100"
-    EndSection
-  '';
-
+#   environment.etc."X11/xorg.conf.d/99-libinput-custom.conf".text = ''
+#     Section "InputClass"
+#         Identifier "Custom libinput config"
+#         MatchDriver "libinput"
+#         MatchIsTouchpad "on"
+#         Option "DisableWhileTyping" "true"
+#         Option "PalmDetection" "true"
+#         Option "PalmMinWidth" "8"
+#         Option "PalmMinZ" "100"
+#     EndSection
+#   '';
+  services.xserver.synaptics = {
+    palmDetect = true;
+  };
 
   #Bluetooth
   hardware.bluetooth.enable = true;
