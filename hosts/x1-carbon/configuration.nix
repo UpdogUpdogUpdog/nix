@@ -60,7 +60,7 @@
   
   environment.systemPackages = with pkgs; [
     power-profiles-daemon
-    spotify-qt
+    spotify
   ];
 
   services.power-profiles-daemon.enable = false;
