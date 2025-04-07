@@ -2,7 +2,7 @@
 
 set -l repo ~/Git\ Repositories/nix
 set -l host (hostname)
-set -l user updogupdogupdog
+set -l user (whoami)
 set -l do_nixos 1
 set -l do_home 1
 
@@ -34,7 +34,7 @@ end
 # Test home-manager build
 if test $do_home -eq 1
     echo "→ Testing Home Manager build..."
-    if ! home-manager build --flake $repo#$user 2> /tmp/home-build.log
+    if ! home-manager build --flake  2> /tmp/home-build.log
         echo "❌ Home Manager build failed:"
         tail -n 30 /tmp/home-build.log | sed '/^$/d' | head -n 15
         exit 1
@@ -56,7 +56,7 @@ if test $do_home -eq 1
     mv /home/$user/.gtkrc-2.0 /home/$user/.gtkrc-2.0.bak
     echo "Removed?"
     ll /home/$user/.gtkrc-2.0*
-    home-manager switch --flake $repo#$user
+    home-manager switch --flake $repo#$user@$hostname
 end
 
 # Prompt for commit message

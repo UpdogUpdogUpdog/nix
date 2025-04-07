@@ -51,7 +51,7 @@
     };
 
     homeConfigurations = {
-      updogupdogupdog@x1-carbon = home-manager.lib.homeManagerConfiguration {
+      "updogupdogupdog@x1-carbon" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           system = "x86_64-linux";
           config.allowUnfree = true;
@@ -69,7 +69,7 @@
         extraSpecialArgs = { inherit inputs; };
       };
 
-      updogupdogupdog@vm = home-manager.lib.homeManagerConfiguration {
+      "updogupdogupdog@vm" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           system = "x86_64-linux";
           config.allowUnfree = true;

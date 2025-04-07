@@ -1,11 +1,12 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, lib, ... }: {
 
-    home.activation.removeDownloadsDir = lib.hm.dag.entryBefore ["linkGeneration"] ''
+    home.activation.removeDownloadsDir = lib.hm.dag.entryBefore [ "linkGeneration" ] ''
     if [ -d "$HOME/Downloads" ] && [ ! -L "$HOME/Downloads" ]; then
         echo "Removing preexisting ~/Downloads directory..."
         rm -rf "$HOME/Downloads"
     fi
     '';
+
 
     home.file = {
     "Downloads" = {
