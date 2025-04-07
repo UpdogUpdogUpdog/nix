@@ -26,7 +26,7 @@
   #Bluetooth
   hardware.bluetooth.enable = true;
   #services.blueman.enable = true; # GTK UI for managing BT (works fine in KDE too)
-  hardware.bluetooth.powerOnBoot = true;
+  hardware.bluetooth.powerOnBoot = false;
 
   # Filesystem
   systemd.tmpfiles.rules = [
