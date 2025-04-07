@@ -31,6 +31,7 @@
   # Filesystem
   systemd.tmpfiles.rules = [
     "d /data 0755 root root -"
+    "d /data/Downloads 0755 updogupdogupdog users -"
   ];
 
   # Fingerprint reader

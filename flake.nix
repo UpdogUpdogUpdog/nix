@@ -44,6 +44,9 @@
           ./hosts/vm/configuration.nix
           ./hosts/vm/hardware-configuration.nix
         ];
+        specialArgs = {
+          inherit inputs overlays;
+        };
       };
     };
 
