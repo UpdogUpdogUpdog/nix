@@ -57,10 +57,14 @@
     };
   };
 
-  services.power-profiles-daemon.enable = false;
+  
   environment.systemPackages = with pkgs; [
     power-profiles-daemon
+    spotify-qt
   ];
+
+  services.power-profiles-daemon.enable = false;
+  
   services.dbus.packages = [
     pkgs.power-profiles-daemon
   ];
@@ -75,10 +79,6 @@
   };
 
   hardware.steam-hardware.enable = true;
-
-  environment.systemPackages = [
-    pkgs.spotify-qt
-  ];
   
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
