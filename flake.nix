@@ -51,7 +51,7 @@
     };
 
     homeConfigurations = {
-      updogupdogupdog = home-manager.lib.homeManagerConfiguration {
+      updogupdogupdog@x1-carbon = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           system = "x86_64-linux";
           config.allowUnfree = true;
@@ -62,7 +62,26 @@
             home.homeDirectory = "/home/updogupdogupdog";
           }
           ./home/updogupdogupdog/common.nix
-          # ./home/updogupdogupdog/minimal.nix
+          ./home/updogupdogupdog/x1-carbon.nix
+          # ./home/updogupdogupdog/minimal.nix #For Troubleshooting
+          inputs.plasma-manager.homeManagerModules.plasma-manager
+        ];
+        extraSpecialArgs = { inherit inputs; };
+      };
+
+      updogupdogupdog@vm = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+          config.allowUnfree = true;
+        };
+        modules = [
+          {
+            home.username = "updogupdogupdog";
+            home.homeDirectory = "/home/updogupdogupdog";
+          }
+          ./home/updogupdogupdog/common.nix
+          #./home/updogupdogupdog/vm.nix # Currently empty -- delete when uncommented
+          # ./home/updogupdogupdog/minimal.nix #For Troubleshooting
           inputs.plasma-manager.homeManagerModules.plasma-manager
         ];
         extraSpecialArgs = { inherit inputs; };

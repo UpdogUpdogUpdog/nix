@@ -31,11 +31,6 @@ home.file = {
     source = ./scripts/rebuild.fish;
     executable = true;
   };
-
-  "Downloads" = {
-    source = config.lib.file.mkOutOfStoreSymlink "/data/Downloads";
-    force = true;
-  };
 };
 
 # The state version is required and should stay at the version you
