@@ -28,9 +28,9 @@
       x1-carbon = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          ./hosts/common/configuration.nix
           ./hosts/x1-carbon/configuration.nix
           ./hosts/x1-carbon/hardware-configuration.nix
-          ./modules/common.nix
           auto-cpufreq.nixosModules.default
         ];
         specialArgs = {
@@ -50,7 +50,7 @@
             home.username = "updogupdogupdog";
             home.homeDirectory = "/home/updogupdogupdog";
           }
-          ./home/updogupdogupdog/x1-carbon.nix
+          ./home/updogupdogupdog/common.nix
           # ./home/updogupdogupdog/minimal.nix
           inputs.plasma-manager.homeManagerModules.plasma-manager
         ];
