@@ -65,6 +65,8 @@
     # steam is a program below, not a package
   ];
 
+  services.fwupd.enable = true;
+
   services.power-profiles-daemon.enable = true;
   
   services.dbus.packages = [
