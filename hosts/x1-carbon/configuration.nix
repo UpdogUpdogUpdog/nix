@@ -7,7 +7,7 @@
 
   networking.hostName = "x1-carbon"; # Define your hostname.
 
-
+  services.libinput.enable = true;
 #   environment.etc."X11/xorg.conf.d/99-libinput-custom.conf".text = ''
 #     Section "InputClass"
 #         Identifier "Custom libinput config"
