@@ -19,9 +19,6 @@
 #         Option "PalmMinZ" "100"
 #     EndSection
 #   '';
-  services.xserver.synaptics = {
-    palmDetect = true;
-  };
 
   #Bluetooth
   hardware.bluetooth.enable = true;
@@ -46,23 +43,25 @@
   services.tlp.enable = false;
   programs.auto-cpufreq.enable = false;
   # optionally, you can configure your auto-cpufreq settings, if you have any
-  programs.auto-cpufreq.settings = {
-    charger = {
-      governor = "performance";
-      turbo = "always";
-    };
+  # programs.auto-cpufreq.settings = {
+  #   charger = {
+  #     governor = "performance";
+  #     turbo = "always";
+  #   };
 
-    battery = {
-      governor = "powersave";
-      turbo = "auto";
-    };
-  };
+  #   battery = {
+  #     governor = "powersave";
+  #     turbo = "auto";
+  #   };
+  # };
 
   
   environment.systemPackages = with pkgs; [
     power-profiles-daemon
     spotify
     discord
+    touchegg
+    # steam is a program below, not a package
   ];
 
   services.power-profiles-daemon.enable = true;
@@ -70,6 +69,8 @@
   services.dbus.packages = [
     pkgs.power-profiles-daemon
   ];
+
+  services.touchegg.enable = true;
   
   programs.steam = {
     enable = true;
