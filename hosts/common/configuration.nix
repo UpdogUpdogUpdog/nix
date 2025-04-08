@@ -169,22 +169,23 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    gh
-    git
-    screen
-    brave
-    neofetch
-    fish
-    mlocate
-    vscode
     _1password-cli
     _1password-gui
+    brave
+    fish
+    gh
+    git
     home-manager
-    ncdu
     kdePackages.isoimagewriter
     mission-center
+    mlocate
+    neofetch
+    ncdu
+    oh-my-fish
+    screen
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    vscode
+    wget
   ];
 
   # Brave Extensions
