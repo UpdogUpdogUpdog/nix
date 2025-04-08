@@ -43,7 +43,7 @@
     kscreenlocker.fprintAuth = true;
   };
 
-  services.tlp.enable = true;
+  services.tlp.enable = false;
   programs.auto-cpufreq.enable = false;
   # optionally, you can configure your auto-cpufreq settings, if you have any
   programs.auto-cpufreq.settings = {
@@ -64,7 +64,7 @@
     spotify
   ];
 
-  services.power-profiles-daemon.enable = false;
+  services.power-profiles-daemon.enable = true;
   
   services.dbus.packages = [
     pkgs.power-profiles-daemon
