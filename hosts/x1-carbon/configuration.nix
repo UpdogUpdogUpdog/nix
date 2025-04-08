@@ -7,7 +7,7 @@
 
   networking.hostName = "x1-carbon"; # Define your hostname.
 
-  services.libinput.enable = true;
+
 #   environment.etc."X11/xorg.conf.d/99-libinput-custom.conf".text = ''
 #     Section "InputClass"
 #         Identifier "Custom libinput config"
@@ -61,6 +61,7 @@
     spotify
     discord
     touchegg
+    libinput
     # steam is a program below, not a package
   ];
 
@@ -70,7 +71,8 @@
     pkgs.power-profiles-daemon
   ];
 
-  services.touchegg.enable = true;
+  services.libinput.enable = true;
+  services.touchegg.enable = false;
   
   programs.steam = {
     enable = true;
