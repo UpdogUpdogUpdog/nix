@@ -62,6 +62,7 @@
   environment.systemPackages = with pkgs; [
     power-profiles-daemon
     spotify
+    discord
   ];
 
   services.power-profiles-daemon.enable = true;

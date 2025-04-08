@@ -184,6 +184,7 @@
     home-manager
     ncdu
     kdePackages.isoimagewriter
+    mission-center
   ];
 
   # Brave Extensions
