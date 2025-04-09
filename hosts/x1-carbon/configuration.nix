@@ -49,9 +49,18 @@
     };
   };
 
-
+  #Enable nvme auto-suspend on idle
   services.udev.extraRules = ''
     ACTION=="add|change", SUBSYSTEM=="pci", ATTR{vendor}=="0x1c5c", ATTR{device}=="0x174a", ATTR{power/control}="auto"
+  '';
+  
+  #Journald to Ram every 30 sec rather than to nvme every 5 seconds. NVME won't sleep while currently getting written to so often.
+  environment.etc."systemd/journald.conf.d/persistent.conf".text = ''
+    [Journal]
+    Storage=volatile
+    RuntimeMaxUse=50M
+    RuntimeMaxFileSize=10M
+    SyncIntervalSec=30s
   '';
   
 
