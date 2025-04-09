@@ -49,6 +49,12 @@
     };
   };
 
+
+  services.udev.extraRules = ''
+    ACTION=="add|change", SUBSYSTEM=="pci", ATTR{vendor}=="0x1c5c", ATTR{device}=="0x174a", ATTR{power/control}="auto"
+  '';
+  
+
   # programs.auto-cpufreq.enable = false;
   # optionally, you can configure your auto-cpufreq settings, if you have any
   # programs.auto-cpufreq.settings = {
