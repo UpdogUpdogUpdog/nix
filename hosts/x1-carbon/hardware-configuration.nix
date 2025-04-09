@@ -16,7 +16,7 @@
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/67c66316-803e-44da-83fd-5d1fda95058a";
       fsType = "ext4";
-      options = [ "noatime" "commit=120" ]; #added to reduce writes on each read for battery efficiency
+      options = [ "noatime" "commit=120" "lazytime" ]; #added to reduce writes on each read for battery efficiency
     };
 
   fileSystems."/boot" =
