@@ -40,7 +40,7 @@
     kscreenlocker.fprintAuth = true;
   };
 
-  services.tlp.enable = false;
+  services.tlp.enable = true;
   programs.auto-cpufreq.enable = false;
   # optionally, you can configure your auto-cpufreq settings, if you have any
   # programs.auto-cpufreq.settings = {
@@ -67,11 +67,11 @@
 
   services.fwupd.enable = true;
 
-  services.power-profiles-daemon.enable = true;
+  services.power-profiles-daemon.enable = false;
   
-  services.dbus.packages = [
-    pkgs.power-profiles-daemon
-  ];
+  # services.dbus.packages = [
+  #   pkgs.power-profiles-daemon
+  # ];
 
   services.libinput.enable = true;
   services.touchegg.enable = false;

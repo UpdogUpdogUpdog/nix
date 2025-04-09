@@ -21,7 +21,7 @@
   outputs = { self, nixpkgs, home-manager, plasma-manager, auto-cpufreq, ... }@inputs:
   let
     overlays = [
-      (import ./overlays/power-profiles-patch.nix)
+      #(import ./overlays/power-profiles-patch.nix)
     ];
   in {
     nixosConfigurations = {
