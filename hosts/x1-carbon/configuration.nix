@@ -63,6 +63,9 @@
     SyncIntervalSec=30s
   '';
   
+  # Cron that trims nvme weekly for better performance and longevity
+  services.fstrim.enable = true;
+
 
   # programs.auto-cpufreq.enable = false;
   # optionally, you can configure your auto-cpufreq settings, if you have any
