@@ -40,8 +40,16 @@
     kscreenlocker.fprintAuth = true;
   };
 
-  services.tlp.enable = true;
-  programs.auto-cpufreq.enable = false;
+  services.tlp =
+   {
+    enable = true;
+    settings = {
+      START_CHARGE_THRESH_BAT0 = 96;
+      STOP_CHARGE_THRESH_BAT0 = 99;
+    };
+  };
+
+  # programs.auto-cpufreq.enable = false;
   # optionally, you can configure your auto-cpufreq settings, if you have any
   # programs.auto-cpufreq.settings = {
   #   charger = {
