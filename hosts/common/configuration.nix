@@ -176,6 +176,7 @@
     gh
     git
     home-manager
+    iotop
     kdePackages.isoimagewriter
     mission-center
     mlocate
