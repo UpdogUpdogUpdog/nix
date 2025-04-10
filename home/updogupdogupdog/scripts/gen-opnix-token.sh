@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-VAULT_NAME="private"
+VAULT_NAME="SSH Keys"
 ITEM_NAME="Updog GitHub SSH Key"
 TOKEN_PATH="/etc/1password/opnix-token"
 ACCOUNT_NAME="opnix-updog"
@@ -11,10 +11,9 @@ op signin --account my.1password.com
 
 echo "[*] Creating service account (you may be prompted)..."
 TOKEN=$(op service-account create \
-    --name "$ACCOUNT_NAME" \
-    --vault "$VAULT_NAME" \
-    --permissions "item:read" \
-    --expiry 90d \
+    "$ACCOUNT_NAME" \
+    --vault "$VAULT_NAME:read_items" \
+    --expiry 24h \
     --format json | jq -r .token)
 
 echo "[*] Writing token to $TOKEN_PATH..."
