@@ -7,7 +7,7 @@ TOKEN_PATH="/etc/1password/opnix-token"
 ACCOUNT_NAME="opnix-updog"
 
 echo "[*] Signing in to 1Password CLI..."
-op signin --account your.1password.com
+op signin --account my.1password.com
 
 echo "[*] Creating service account (you may be prompted)..."
 TOKEN=$(op service-account create \
