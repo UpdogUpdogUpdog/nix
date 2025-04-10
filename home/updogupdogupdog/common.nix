@@ -38,6 +38,17 @@ home.file = {
 
 };
 
+programs.onepassword-secrets = {
+  enable = true;
+  secrets = [
+    {
+      # Paths are relative to home directory
+      path = ".ssh/github-id_ed25519";
+      reference = "op://SSH Keys/Updog GitHub SSH Key/id_ed25519";
+    }
+  ];
+};
+
 # The state version is required and should stay at the version you
 # originally installed.
 home.stateVersion = "24.11";

@@ -123,6 +123,16 @@
       polkitPolicyOwners = [ "updogupdogupdog" ];
     };
 
+    services.onepassword-secrets = {
+      enable = true;
+      users = [ "updogupdogupdog" ];  # Users that need secret access
+      tokenFile = "/etc/opnix-token";  # Default location
+      configFile = builtins.toFile "empty-op-secrets.json" ''
+        { "secrets": [] }
+      '';
+      # outputDir = "/var/lib/opnix/secrets";  # Optional, this is the default
+    };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.updogupdogupdog = {
     isNormalUser = true;
