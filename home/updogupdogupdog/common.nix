@@ -31,10 +31,7 @@ home.file = {
     source = ./scripts/rebuild.fish;
     executable = true;
   };
-  ".local/bin/toggle-cam" = {
-    source = ./scripts/toggle-cam.fish;
-    executable = true;
-  };
+
 };
 
 # The state version is required and should stay at the version you

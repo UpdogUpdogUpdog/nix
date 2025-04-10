@@ -13,5 +13,9 @@
         source = config.lib.file.mkOutOfStoreSymlink "/data/Downloads";
         force = true;
     };
+    ".local/bin/toggle-cam" = {
+        source = ./scripts/toggle-cam.fish;
+        executable = true;
+    };
   };
 }
