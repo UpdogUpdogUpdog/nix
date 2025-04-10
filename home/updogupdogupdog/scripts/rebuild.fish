@@ -24,7 +24,7 @@ echo "🔍 Validating config before rebuild..."
 # Test nixos build
 if test $do_nixos -eq 1
     echo "→ Testing NixOS build..."
-    if ! nixos-rebuild build --flake $repo#$host 2> /tmp/nixos-build.log
+    if ! nixos-rebuild build --flake $repo#$host --impure 2> /tmp/nixos-build.log
         echo "❌ NixOS build failed:"
         tail -n 30 /tmp/nixos-build.log | sed '/^$/d' | head -n 15
         exit 1
@@ -34,7 +34,7 @@ end
 # Test home-manager build
 if test $do_home -eq 1
     echo "→ Testing Home Manager build..."
-    if ! home-manager build --flake $repo#$user@$host 2> /tmp/home-build.log
+    if ! home-manager build --flake $repo#$user@$host --impure 2> /tmp/home-build.log
         echo "❌ Home Manager build failed:"
         tail -n 30 /tmp/home-build.log | sed '/^$/d' | head -n 15
         exit 1
@@ -46,7 +46,7 @@ echo "✅ Build successful. Applying changes..."
 # Switch!
 if test $do_nixos -eq 1
     echo "→ Switching NixOS..."
-    sudo nixos-rebuild switch --flake $repo#$host
+    sudo nixos-rebuild switch --flake $repo#$host --impure
 end
 
 if test $do_home -eq 1
@@ -56,7 +56,7 @@ if test $do_home -eq 1
     mv /home/$user/.gtkrc-2.0 /home/$user/.gtkrc-2.0.bak
     echo "Removed?"
     ll /home/$user/.gtkrc-2.0*
-    home-manager switch --flake $repo#$user@$host
+    home-manager switch --flake $repo#$user@$host --impure
 end
 
 # Prompt for commit message
