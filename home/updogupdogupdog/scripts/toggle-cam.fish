@@ -31,7 +31,7 @@ if test $unbound -eq 1
 else
     echo "Reloading uvcvideo and re-binding all cameras..."
     sudo modprobe uvcvideo
-    sleep 1
+    sleep 3
 
     for vdev in /sys/class/video4linux/video*
         set device_path (readlink $vdev/device 2> /dev/null)
