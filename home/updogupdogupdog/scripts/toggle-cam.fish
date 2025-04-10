@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
 
-set status 0
+set unbound 0
 set found 0
 
 for vdev in /sys/class/video4linux/video*
@@ -16,7 +16,7 @@ for vdev in /sys/class/video4linux/video*
     if test -e "$driver_path"
         echo "Unbinding $device_id and unloading uvcvideo..."
         echo $device_id | sudo tee /sys/bus/usb/drivers/uvcvideo/unbind > /dev/null
-        set status 1
+        set unbound 1
     end
 end
 
@@ -25,7 +25,7 @@ end
 #     exit 1
 # end
 
-if test $status -eq 1
+if test $unbound -eq 1
     sudo modprobe -r uvcvideo
     kdialog --title "Webcam Toggle" --passivepopup "Camera disabled." 3
 else
