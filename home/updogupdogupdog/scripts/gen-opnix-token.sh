@@ -3,7 +3,7 @@ set -euo pipefail
 
 VAULT_NAME="SSH Keys"
 ITEM_NAME="Updog GitHub SSH Key"
-TOKEN_PATH="/etc/1password/opnix-token"
+TOKEN_PATH="/etc/opnix-token"
 ACCOUNT_NAME="opnix-updog"
 
 echo "[*] Signing in to 1Password CLI..."
@@ -13,8 +13,7 @@ echo "[*] Creating service account (you may be prompted)..."
 TOKEN=$(op service-account create \
     "$ACCOUNT_NAME" \
     --vault "$VAULT_NAME:read_items" \
-    --expiry 24h \
-    --format json | jq -r .token)
+    --expires-in 24h)
 
 echo "[*] Writing token to $TOKEN_PATH..."
 sudo install -Dm600 /dev/stdin "$TOKEN_PATH" <<< "$TOKEN"
