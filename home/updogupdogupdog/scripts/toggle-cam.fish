@@ -20,10 +20,10 @@ for vdev in /sys/class/video4linux/video*
     end
 end
 
-if test $found -eq 0
-    kdialog --title "Webcam Toggle" --passivepopup "No /dev/video* devices found." 3
-    exit 1
-end
+# if test $found -eq 0
+#     kdialog --title "Webcam Toggle" --passivepopup "No /dev/video* devices found." 3
+#     exit 1
+# end
 
 if test $status -eq 1
     sudo modprobe -r uvcvideo
