@@ -177,6 +177,7 @@
     git
     home-manager
     iotop
+    jq
     kdePackages.isoimagewriter
     kdialog
     mission-center

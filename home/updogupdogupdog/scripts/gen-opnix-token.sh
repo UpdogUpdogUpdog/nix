@@ -13,7 +13,8 @@ echo "[*] Creating service account (you may be prompted)..."
 TOKEN=$(op service-account create \
     "$ACCOUNT_NAME" \
     --vault "$VAULT_NAME:read_items" \
-    --expires-in 24h)
+    --expires-in 24h \
+    --format json | jq -r .token)
 
 echo "[*] Writing token to $TOKEN_PATH..."
 sudo install -Dm600 /dev/stdin "$TOKEN_PATH" <<< "$TOKEN"
