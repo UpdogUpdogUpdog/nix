@@ -39,8 +39,8 @@ else
             continue
         end
 
-        set device_id (basename $device_path)
-        echo $device_id | sudo tee /sys/bus/usb/drivers/uvcvideo/bind > /dev/null
+        #set device_id (basename $device_path)
+        #echo $device_id | sudo tee /sys/bus/usb/drivers/uvcvideo/bind > /dev/null
     end
     kdialog --title "Webcam Toggle" --passivepopup "Camera enabled." 3
 end
