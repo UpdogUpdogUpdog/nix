@@ -178,6 +178,7 @@
     home-manager
     iotop
     kdePackages.isoimagewriter
+    kdialog
     mission-center
     mlocate
     neofetch
