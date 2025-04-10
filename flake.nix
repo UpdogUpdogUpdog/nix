@@ -12,13 +12,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-    auto-cpufreq = {
-      url = "github:AdnanHodzic/auto-cpufreq";
-      inputs.nixpkgs.follows = "nixpkgs";
+    opnix = {
+      url = "github:brizzbuzz/opnix";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, plasma-manager, auto-cpufreq, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, plasma-manager, opnix, ... }@inputs:
   let
     overlays = [
       #(import ./overlays/power-profiles-patch.nix)
@@ -31,7 +30,7 @@
           ./hosts/common/configuration.nix
           ./hosts/x1-carbon/configuration.nix
           ./hosts/x1-carbon/hardware-configuration.nix
-          auto-cpufreq.nixosModules.default
+          opnix.nixosModules.default
         ];
         specialArgs = {
           inherit inputs overlays;
@@ -63,6 +62,7 @@
           }
           ./home/updogupdogupdog/common.nix
           ./home/updogupdogupdog/x1-carbon.nix
+          opnix.homeManagerModules.default
           # ./home/updogupdogupdog/minimal.nix #For Troubleshooting
           inputs.plasma-manager.homeManagerModules.plasma-manager
         ];
@@ -80,9 +80,9 @@
             home.homeDirectory = "/home/updogupdogupdog";
           }
           ./home/updogupdogupdog/common.nix
+          opnix.homeManagerModules.default
           #./home/updogupdogupdog/vm.nix # Currently empty -- delete when uncommented
           # ./home/updogupdogupdog/minimal.nix #For Troubleshooting
-          inputs.plasma-manager.homeManagerModules.plasma-manager
         ];
         extraSpecialArgs = { inherit inputs; };
       };

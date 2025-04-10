@@ -127,7 +127,7 @@
   users.users.updogupdogupdog = {
     isNormalUser = true;
     description = "Updog";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "onepassword-secrets"];
     packages = with pkgs; [
       kdePackages.kate
     #  thunderbird
