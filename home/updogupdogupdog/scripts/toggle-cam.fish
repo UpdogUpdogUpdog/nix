@@ -78,4 +78,4 @@ else
     if is_uvc_loaded
         echo "Module loaded."
         kdialog --title "Webcam Toggle" --passivepopup "Camera enabled and ready." 3
-
+    end

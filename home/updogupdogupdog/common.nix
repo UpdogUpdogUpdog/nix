@@ -31,6 +31,10 @@ home.file = {
     source = ./scripts/rebuild.fish;
     executable = true;
   };
+  ".local/bin/gen-opnix-token" = {
+    source = ./scripts/gen-opnix-token.sh;
+    executable = true;
+  };
 
 };
 
