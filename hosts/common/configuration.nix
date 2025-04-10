@@ -124,7 +124,7 @@
     };
 
     services.onepassword-secrets = {
-      enable = true;
+      enable = false;
       users = [ "updogupdogupdog" ];  # Users that need secret access
       tokenFile = "/etc/opnix-token";  # Default location
       configFile = builtins.toFile "empty-op-secrets.json" ''

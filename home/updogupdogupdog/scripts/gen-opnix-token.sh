@@ -18,5 +18,6 @@ TOKEN=$(op service-account create \
 
 echo "[*] Writing token to $TOKEN_PATH..."
 sudo install -Dm600 /dev/stdin "$TOKEN_PATH" <<< "$TOKEN"
+sudo chown updogupdogupdog:onepassword-secrets $TOKEN_PATH
 
 echo "[+] Token written. Try 'opnix list' or 'home-manager switch' now."
