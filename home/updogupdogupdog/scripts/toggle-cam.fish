@@ -47,6 +47,8 @@ if test $unbound -eq 1
     kdialog --title "Webcam Toggle" --passivepopup "Camera disabled." 3
 else
     echo "Reloading uvcvideo and re-binding all cameras..."
+    sudo modprobe -r uvcvideo 2> /dev/null
+    sleep 3
     sudo modprobe uvcvideo
     sleep 3
 
