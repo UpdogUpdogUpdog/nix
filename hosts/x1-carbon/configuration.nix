@@ -67,11 +67,11 @@
   services.fstrim.enable = true;
   
   environment.systemPackages = with pkgs; [
+    alpaca
+    discord
+    libinput
     power-profiles-daemon
     spotify
-    discord
-    touchegg
-    libinput
     # steam is a program below, not a package
   ];
 
@@ -84,7 +84,6 @@
   # ];
 
   services.libinput.enable = true;
-  services.touchegg.enable = false;
   
   programs.steam = {
     enable = true;
