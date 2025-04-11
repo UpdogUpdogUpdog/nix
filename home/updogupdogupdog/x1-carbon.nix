@@ -14,7 +14,7 @@
         force = true;
     };
     ".local/bin/toggle-cam" = {
-        source = ./scripts/toggle-cam.fish;
+        source = ./scripts/toggle-cam.sh;
         executable = true;
     };
   };
