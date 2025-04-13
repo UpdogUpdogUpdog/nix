@@ -5,6 +5,27 @@ set -l host (hostname)
 set -l user (whoami)
 set -l do_nixos 1
 set -l do_home 1
+set token_file /etc/opnix-token
+set gen_script ~/.local/bin/gen-opnix-token
+
+# Check if token file exists.
+if test -f $token_file
+    # Get last modification time (seconds since epoch) of the token file.
+    set mod_time (stat -c %Y $token_file)
+    # Get current time (seconds since epoch).
+    set current_time (date +%s)
+    # Calculate age of the token.
+    set diff (math $current_time - $mod_time)
+    if test $diff -gt 86400
+        echo "Token is older than 24 hours, regenerating..."
+        $gen_script
+    else
+        echo "Token is fresh."
+    end
+else
+    echo "Token file doesn't exist, generating token..."
+    $gen_script
+end
 
 # Parse args
 for arg in $argv
