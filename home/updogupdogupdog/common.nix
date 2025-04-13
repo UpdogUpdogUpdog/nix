@@ -47,7 +47,7 @@ programs.onepassword-secrets = {
     {
       # Paths are relative to home directory
       path = ".ssh/github-id_ed25519";
-      reference = "op://SSH Keys/Updog GitHub SSH Key/id_ed25519";
+      reference = "op://SSH Keys/Updog GitHub SSH Key/private key";
     }
   ];
 };
