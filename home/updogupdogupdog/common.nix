@@ -5,10 +5,13 @@
 # Programs
 programs.firefox.enable = false;
 programs.git = {
-    enable = true;
-    userName = "Updog";
-    userEmail = "me@updog.cool";
-};
+  enable = true;
+  userName = "Updog";
+  userEmail = "me@updog.cool";
+  extraConfig = {
+    url."git@github.com:".insteadOf = "https://github.com/";
+  };
+};  
 
 programs.plasma = {
   enable = true;

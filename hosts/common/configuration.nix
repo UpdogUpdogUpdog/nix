@@ -144,6 +144,10 @@
     ];
   };
 
+  users.groups.mygroup = {
+    name = "onepassword-secrets";
+  };
+
   # Allow wheel users to sudo without password entry
   security.sudo.wheelNeedsPassword = false;
   # Enable automatic login for the user.
