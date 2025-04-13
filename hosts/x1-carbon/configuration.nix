@@ -1,8 +1,7 @@
-{ config, lib, pkgs, overlays, ... }: {
+{ config, lib, pkgs, ... }: {
   
   nixpkgs = {
     config.allowUnfree = true; 
-    overlays = overlays;
   };
 
   networking.hostName = "x1-carbon"; # Define your hostname.
@@ -78,10 +77,6 @@
   services.fwupd.enable = true;
 
   services.power-profiles-daemon.enable = false;
-  
-  # services.dbus.packages = [
-  #   pkgs.power-profiles-daemon
-  # ];
 
   services.libinput.enable = true;
   

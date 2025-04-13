@@ -1,8 +1,7 @@
-{ config, lib, pkgs, overlays, ... }: {
+{ config, lib, pkgs, ... }: {
   
   nixpkgs = {
-    config.allowUnfree = true; 
-    overlays = overlays;
+    config.allowUnfree = true;
   };
 
   networking.hostName = "vm"; # Define your hostname.

@@ -17,12 +17,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, plasma-manager, opnix, ... }@inputs:
-  let
-    overlays = [
-      #(import ./overlays/power-profiles-patch.nix)
-    ];
-  in {
+  outputs = { self, nixpkgs, home-manager, plasma-manager, opnix, ... }@inputs: {
     nixosConfigurations = {
       x1-carbon = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -33,7 +28,7 @@
           opnix.nixosModules.default
         ];
         specialArgs = {
-          inherit inputs overlays;
+          inherit inputs;
         };
       };
       vm = nixpkgs.lib.nixosSystem {
@@ -44,7 +39,7 @@
           ./hosts/vm/hardware-configuration.nix
         ];
         specialArgs = {
-          inherit inputs overlays;
+          inherit inputs;
         };
       };
     };

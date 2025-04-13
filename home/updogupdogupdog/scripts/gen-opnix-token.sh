@@ -6,6 +6,18 @@ ITEM_NAME="Updog GitHub SSH Key"
 TOKEN_PATH="/etc/opnix-token"
 ACCOUNT_NAME="opnix-updog"
 
+# Check if 1password is running
+if ! pgrep -x "1password" > /dev/null; then
+    1password --silent &> /dev/null &
+    set launched 1
+fi
+
+# Wait until the CLI can actually connect
+while ! op vault list &>/dev/null; do
+    echo "[!] Not signed in. Make sure the 1Password app is open and you're logged in."
+    sleep 2
+done
+
 echo "[*] Signing in to 1Password CLI..."
 op signin --account my.1password.com
 

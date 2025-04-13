@@ -2,11 +2,10 @@
 # each system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, pkgs, overlays, ... }: {
+{ config, lib, pkgs, ... }: {
 
   nixpkgs = {
     config.allowUnfree = true; 
-    overlays = overlays;
   };
   
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
