@@ -49,6 +49,16 @@ programs.onepassword-secrets = {
   ];
 };
 
+programs.ssh = {
+  enable = true;
+  matchBlocks."github.com" = {
+    user = "git";
+    identityFile = ".ssh/github-id_ed25519";
+    identitiesOnly = true;
+  };
+};
+
+
 # The state version is required and should stay at the version you
 # originally installed.
 home.stateVersion = "24.11";
