@@ -1,6 +1,18 @@
 { config, pkgs, ... }: {
 
 # Packages
+home.packages = with pkgs; [
+  _1password-cli
+  _1password-gui
+  brave
+  kdePackages.isoimagewriter
+  kdialog
+  mission-center
+  vscode
+  kdePackages.kate
+];
+
+
 
 # Programs
 programs.firefox.enable = false;

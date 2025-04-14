@@ -137,10 +137,10 @@
     isNormalUser = true;
     description = "Updog";
     extraGroups = [ "networkmanager" "wheel" "onepassword-secrets"];
-    packages = with pkgs; [
-      kdePackages.kate
+    #packages = with pkgs; [
+    #  kdePackages.kate
     #  thunderbird
-    ];
+    #];
   };
 
   users.groups.mygroup = {
@@ -184,18 +184,18 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    _1password-cli
-    _1password-gui
-    brave
+    #_1password-cli
+    #_1password-gui
+    #brave
     fish
     gh
     git
     home-manager
     iotop
     jq
-    kdePackages.isoimagewriter
-    kdialog
-    mission-center
+    #kdePackages.isoimagewriter
+    #kdialog
+    #mission-center
     mlocate
     neofetch
     ncdu
@@ -203,7 +203,7 @@
     powertop
     screen
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    vscode
+    #vscode
     wget
   ];
 
