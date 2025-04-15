@@ -181,6 +181,11 @@
     options = "--delete-older-than 7d"; # optional, for keeping some history
   };
 
+  swapDevices = [{
+    device = "/swapfile";
+    size = 8192; # 8GB, or change if you want more/less
+  }];
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
