@@ -12,6 +12,16 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
+  boot.kernelParams = [
+    "resume=/swapfile"
+    "resume_offset=4528128"
+  ];
+
+  services.logind.extraConfig = ''
+  HandleLidSwitch=hibernate
+  HandlePowerKey=hibernate
+  HibernateDelaySec=0
+  '';
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/67c66316-803e-44da-83fd-5d1fda95058a";
@@ -30,8 +40,6 @@
       fsType = "ntfs";
       options = [ "rw" "uid=1000" "gid=100" "umask=0022" "nofail" ]; 
     };
-
-  swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
