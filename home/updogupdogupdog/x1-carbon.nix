@@ -1,5 +1,12 @@
 { config, pkgs, lib, ... }: {
 
+
+    home.packages = with pkgs; [
+    discord
+    spotify
+    ];
+
+
     home.activation.removeDownloadsDir = lib.hm.dag.entryBefore [ "linkGeneration" ] ''
     if [ -d "$HOME/Downloads" ] && [ ! -L "$HOME/Downloads" ]; then
         echo "Removing preexisting ~/Downloads directory..."
@@ -17,5 +24,9 @@
         source = ./scripts/toggle-cam.sh;
         executable = true;
     };
+
+
   };
+
+
 }
