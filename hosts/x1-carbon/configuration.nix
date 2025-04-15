@@ -95,6 +95,8 @@
     "resume=/swapfile"
     "resume_offset=4528128"
   ];
+    
+  boot.resumeDevice = "/swapfile";
 
   services.logind.extraConfig = ''
   HandleLidSwitch=hibernate
