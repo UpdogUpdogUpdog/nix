@@ -94,9 +94,10 @@
   boot.kernelParams = [
     "resume=/swapfile"
     "resume_offset=4528128"
+    "noresume_delay=0"
   ];
     
-  boot.resumeDevice = "/swapfile";
+  boot.resumeDevice = "/dev/disk/by-uuid/67c66316-803e-44da-83fd-5d1fda95058a";
 
   services.logind.extraConfig = ''
   HandleLidSwitch=hibernate
