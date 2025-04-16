@@ -86,15 +86,20 @@
   #Trackpad config
   services.libinput.enable = true;
   
-  #Hibernation Support
+  #Hibernation Support w/ Swap File
   boot.kernelParams = [
     "resume=/swapfile"
-    "resume_offset=4528128"
+    "resume_offset=4528128"  #This value will be unknown on new deployments until the swap file is created
     "noresume_delay=0"  
   ];
 
   #Hibernation Swap device  
   boot.resumeDevice = "/dev/disk/by-uuid/67c66316-803e-44da-83fd-5d1fda95058a";
+
+  #Hibernate after extended suspend
+  systemd.sleep.extraConfig = ''
+    HibernateDelaySec=1h
+  '';
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
