@@ -38,7 +38,8 @@
     sddm.fprintAuth = false;  # If you're using SDDM with KDE Plasma
     kscreenlocker.fprintAuth = true;
   };
-
+  
+  # Battery and power source profiles and throttling
   services.tlp =
    {
     enable = true;
@@ -65,15 +66,7 @@
   # Cron that trims nvme weekly for better performance and longevity
   services.fstrim.enable = true;
   
-  environment.systemPackages = with pkgs; [
-    #alpaca
-    #discord
-    #libinput
-    #power-profiles-daemon
-    #spotify
-    # steam is a program below, not a package
-  ];
-
+  #Home manager doesn't like programs?
   programs.steam = {
       enable = true;
       package = pkgs.steam.override {
@@ -82,28 +75,26 @@
       ];
       };
   };
+  
+  hardware.steam-hardware.enable = true;
 
   services.fwupd.enable = true;
 
+  #Enabled by default in kde, I think. Needs manual disable or tlp won't work.
   services.power-profiles-daemon.enable = false;
 
+  #Trackpad config
   services.libinput.enable = true;
-
-  hardware.steam-hardware.enable = true;  
-
+  
+  #Hibernation Support
   boot.kernelParams = [
     "resume=/swapfile"
     "resume_offset=4528128"
-    "noresume_delay=0"
+    "noresume_delay=0"  
   ];
-    
-  boot.resumeDevice = "/dev/disk/by-uuid/67c66316-803e-44da-83fd-5d1fda95058a";
 
-  services.logind.extraConfig = ''
-  HandleLidSwitch=hibernate
-  HandlePowerKey=hibernate
-  HibernateDelaySec=0
-  '';
+  #Hibernation Swap device  
+  boot.resumeDevice = "/dev/disk/by-uuid/67c66316-803e-44da-83fd-5d1fda95058a";
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
