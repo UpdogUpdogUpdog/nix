@@ -40,9 +40,5 @@
       force = true;
     };
 
-    # ".local/bin/toggle-cam" = {
-    #   source = ./scripts/toggle-cam.sh;
-    #   executable = true;
-    # };
   };
 }
