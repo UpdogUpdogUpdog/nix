@@ -13,7 +13,7 @@
         owner = "UpdogUpdogUpdog";
         repo = "toggle-cam";
         rev = "main";
-        sha256 = "yMxktO3i9mmuLbbN7ZuCQva88gvL/6S/sdUcRggstys=";
+        sha256 = "AHYo29ZlpaIoGTttinX68QJhCW5Kkea1X/Im5Oqgs6c=";
       };
 
       nativeBuildInputs = [ bash ];
