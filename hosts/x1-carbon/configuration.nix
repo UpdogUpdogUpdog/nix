@@ -90,7 +90,8 @@
   boot.kernelParams = [
     "resume=/swapfile"
     "resume_offset=4528128"  #This value will be unknown on new deployments until the swap file is created
-    "noresume_delay=0"  
+    "noresume_delay=0"
+    "i915.enable_psr=0"
   ];
 
   #Hibernation Swap device  
