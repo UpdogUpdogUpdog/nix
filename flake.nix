@@ -19,12 +19,12 @@
 
   outputs = { self, nixpkgs, home-manager, plasma-manager, opnix, ... }@inputs: {
     nixosConfigurations = {
-      x1-carbon = nixpkgs.lib.nixosSystem {
+      x1-carbon-g9 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./hosts/common/configuration.nix
-          ./hosts/x1-carbon/configuration.nix
-          ./hosts/x1-carbon/hardware-configuration.nix
+          ./hosts/x1-carbon-g9/configuration.nix
+          ./hosts/x1-carbon-g9/hardware-configuration.nix
           opnix.nixosModules.default
         ];
         specialArgs = {
@@ -45,7 +45,7 @@
     };
 
     homeConfigurations = {
-      "updogupdogupdog@x1-carbon" = home-manager.lib.homeManagerConfiguration {
+      "updogupdogupdog@x1-carbon-g9" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           system = "x86_64-linux";
           config.allowUnfree = true;
@@ -56,7 +56,7 @@
             home.homeDirectory = "/home/updogupdogupdog";
           }
           ./home/updogupdogupdog/common.nix
-          ./home/updogupdogupdog/x1-carbon.nix
+          ./home/updogupdogupdog/x1-carbon-g9.nix
           opnix.homeManagerModules.default
           # ./home/updogupdogupdog/minimal.nix #For Troubleshooting
           inputs.plasma-manager.homeManagerModules.plasma-manager

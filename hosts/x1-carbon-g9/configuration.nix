@@ -4,7 +4,7 @@
     config.allowUnfree = true; 
   };
 
-  networking.hostName = "x1-carbon"; # Define your hostname.
+  networking.hostName = "x1-carbon-g9"; # Define your hostname.
 
 
 #   environment.etc."X11/xorg.conf.d/99-libinput-custom.conf".text = ''
@@ -86,12 +86,12 @@
   #Trackpad config
   services.libinput.enable = true;
   
-  #Hibernation Support w/ Swap File
+  # kernel parameters
   boot.kernelParams = [
-    "resume=/swapfile"
-    "resume_offset=4528128"  #This value will be unknown on new deployments until the swap file is created
-    "noresume_delay=0"
-    "i915.enable_psr=0"
+    "resume=/swapfile"       # Hibernation: This is the swap file created by the systemd-swap service
+    "resume_offset=4528128"  # Hibernation: This value will be unknown on new deployments until the swap file is created
+    "noresume_delay=0"       # Hibernation: If booting without hibernation resume, don't wait to complete timeout.
+    "i915.enable_psr=0"      # Hardware: Disables Panel Self Refresh to prevent coil whine near esc key on Lenovo x1 Carbon Gen 9 laptops 
   ];
 
   #Hibernation Swap device  
