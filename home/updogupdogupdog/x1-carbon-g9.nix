@@ -3,7 +3,7 @@
 {
   home.packages = with pkgs; [
     discord
-    #spotify
+    spotify
 
     (stdenv.mkDerivation rec {
       pname = "toggle-cam";
