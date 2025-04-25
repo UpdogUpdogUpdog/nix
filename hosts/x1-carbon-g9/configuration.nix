@@ -85,6 +85,11 @@
 
   #Trackpad config
   services.libinput.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    # Add any additional packages you want to install system-wide
+    libinput
+  ];
   
   # kernel parameters
   boot.kernelParams = [
