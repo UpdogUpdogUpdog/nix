@@ -74,6 +74,16 @@ programs.ssh = {
 };
 
 
+xdg.mimeApps = {
+  enable = true;
+  defaultApplications = {
+    "x-scheme-handler/api" = [ "brave-browser.desktop" ];
+    "x-scheme-handler/unity" = [ "brave-browser.desktop" ];
+  };
+};
+
+
+
 # The state version is required and should stay at the version you
 # originally installed.
 home.stateVersion = "24.11";
