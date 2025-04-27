@@ -4,7 +4,6 @@
   home.packages = with pkgs; [
     discord
     spotify
-    unityhub
 
     (stdenv.mkDerivation rec {
       pname = "toggle-cam";
