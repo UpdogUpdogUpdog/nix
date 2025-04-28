@@ -40,14 +40,28 @@ for arg in $argv
     end
 end
 
-echo "🔍 Validating config before rebuild..."
+echo "👀 Validating config before rebuild..."
+
+# Prefetch updated toggle-cam SHA if necessary
+echo "🔍 Prefetching toggle-cam sha256..."
+
+set -l new_sha (nix-prefetch-url --unpack https://github.com/UpdogUpdogUpdog/toggle-cam/archive/refs/heads/main.tar.gz)
+
+if test $status -eq 0
+    echo "✅ Got new toggle-cam sha256: $new_sha"
+    echo "🔄 Updating toggle-cam/default.nix with new sha256..."
+    sed -i "s|sha256 = \".*\";|sha256 = \"$new_sha\";|" $repo/packages/toggle-cam/default.nix
+else
+    echo "❌ Failed to prefetch toggle-cam tarball."
+    exit 1
+end
 
 # Test nixos build
 if test $do_nixos -eq 1
     echo "→ Testing NixOS build..."
     if ! nixos-rebuild build --flake $repo#$host 2> /tmp/nixos-build.log
         echo "❌ NixOS build failed:"
-        tail -n 30 /tmp/nixos-build.log | sed '/^$/d' | head -n 15
+        tail -n 30 /tmp/nixos-build.log | sed '/^$/d' | head -n 50
         exit 1
     end
 end
@@ -57,7 +71,7 @@ if test $do_home -eq 1
     echo "→ Testing Home Manager build..."
     if ! home-manager build --flake $repo#$user@$host 2> /tmp/home-build.log
         echo "❌ Home Manager build failed:"
-        tail -n 30 /tmp/home-build.log | sed '/^$/d' | head -n 15
+        tail -n 30 /tmp/home-build.log | sed '/^$/d' | head -n 50
         exit 1
     end
 end

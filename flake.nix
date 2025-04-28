@@ -44,11 +44,17 @@
       };
     };
 
+    overlays.default = final: prev: {
+      # Add any overlays you want to use here
+      toggle-cam = final.callPackage ./packages/toggle-cam { };
+    };
+
     homeConfigurations = {
       "updogupdogupdog@x1-carbon-g9" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           system = "x86_64-linux";
           config.allowUnfree = true;
+          overlays = [ self.overlays.default ];
         };
         modules = [
           {
