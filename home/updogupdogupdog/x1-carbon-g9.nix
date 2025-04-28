@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./services/toggle-cam.nix
+    ./services/cam-status.nix
   ];
 
   home.packages = with pkgs; [
