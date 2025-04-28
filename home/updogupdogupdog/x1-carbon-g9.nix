@@ -6,7 +6,7 @@
     spotify
 
     (stdenv.mkDerivation rec {
-      pname = "toggle-cam";
+      pname = "toggle-cam";  #This seems to be broken? Currently isn't changing the file since 4.19.
       version = "main";
 
       src = fetchFromGitHub {
