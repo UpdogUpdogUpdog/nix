@@ -78,6 +78,8 @@
           opnix.homeManagerModules.default
           #./home/updogupdogupdog/vm.nix # Currently empty -- delete when uncommented
           # ./home/updogupdogupdog/minimal.nix #For Troubleshooting
+          inputs.plasma-manager.homeManagerModules.plasma-manager
+
         ];
         extraSpecialArgs = { inherit inputs; };
       };
