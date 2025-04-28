@@ -6,7 +6,7 @@
       Description = "Camera status watcher via udev";
     };
     Service = {
-      ExecStart = "${pkgs.toggle-cam}/bin/cam-status.sh";
+      ExecStart = "/usr/bin/env bash ${pkgs.toggle-cam}/bin/cam-status.sh";
       Restart = "always";
     };
     Install = {
