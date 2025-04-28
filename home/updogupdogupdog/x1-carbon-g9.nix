@@ -1,6 +1,10 @@
 { config, pkgs, lib, ... }:
 
 {
+  imports = [
+    ./services/toggle-cam.nix
+  ];
+
   home.packages = with pkgs; [
     discord
     spotify
