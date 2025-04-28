@@ -13,7 +13,8 @@
         owner = "UpdogUpdogUpdog";
         repo = "toggle-cam";
         rev = "main";
-        sha256 = "AHYo29ZlpaIoGTttinX68QJhCW5Kkea1X/Im5Oqgs6c=";
+        #sha256 = lib.fakeSha256;
+        sha256 = "sha256-d5xPQJnrFj8SZRB4aNRmd3I5br07n4G57JMv6NYyZGo=";
       };
 
       nativeBuildInputs = [ bash ];
@@ -22,7 +23,7 @@
 
       installPhase = ''
         mkdir -p $out
-        IS_NIXOS=true PREFIX=$out bash ./install.sh
+        IS_NIXOS=true PREFIX=$out DOTCONFIG=$out bash ./install.sh
       '';
     })
   ];
