@@ -181,6 +181,8 @@
     options = "--delete-older-than 7d"; # optional, for keeping some history
   };
 
+  boot.loader.systemd-boot.configurationLimit = 3; # Keep the last 3 nixos generations.
+
   swapDevices = [{
     device = "/swapfile";
     size = 8192; # 8GB, or change if you want more/less

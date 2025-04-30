@@ -75,6 +75,9 @@
       ];
       };
   };
+
+  xdg.portal.xdgOpenUsePortal = true; # Use xdg-open portal for opening files and URLs. Plex-desktop needs this
+
   
   hardware.steam-hardware.enable = true;
 
