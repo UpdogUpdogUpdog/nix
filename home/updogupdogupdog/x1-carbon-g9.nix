@@ -7,6 +7,7 @@
 
   home.packages = with pkgs; [
     discord
+    plex-desktop
     spotify
     toggle-cam
   ];
