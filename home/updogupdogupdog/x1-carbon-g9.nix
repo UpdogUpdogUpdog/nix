@@ -12,6 +12,8 @@
     toggle-cam
   ];
 
+  xdg.portal.xdgOpenUsePortal = true;
+
   home.activation.removeDownloadsDir = lib.hm.dag.entryBefore [ "linkGeneration" ] ''
     if [ -d "$HOME/Downloads" ] && [ ! -L "$HOME/Downloads" ]; then
       echo "Removing preexisting ~/Downloads directory..."
