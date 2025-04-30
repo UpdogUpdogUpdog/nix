@@ -89,6 +89,7 @@
   environment.systemPackages = with pkgs; [
     # Add any additional packages you want to install system-wide
     libinput
+    sl
   ];
   
   # kernel parameters
