@@ -29,8 +29,13 @@
   home.activation.plexDesktopFix = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     mkdir -p ~/.local/share/applications
     cp ${pkgs.plex-desktop}/share/applications/plex-desktop.desktop ~/.local/share/applications/plex-desktop.desktop
+
+    # Fix Exec line
     sed -i 's|^Exec=.*|Exec=plex-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland|' ~/.local/share/applications/plex-desktop.desktop
-    sed -i 's|^Categories=.*|Categories=Multimedia;|' ~/.local/share/applications/plex-desktop.desktop
+
+    # Fix Categories line — explicitly escape special chars and force overwrite
+    sed -i '/^Categories=/c\Categories=Multimedia;' ~/.local/share/applications/plex-desktop.desktop
   '';
+
 
 }
