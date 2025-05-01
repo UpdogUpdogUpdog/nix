@@ -30,6 +30,7 @@
     mkdir -p ~/.local/share/applications
     cp ${pkgs.plex-desktop}/share/applications/plex-desktop.desktop ~/.local/share/applications/plex-desktop.desktop
     sed -i 's|^Exec=.*|Exec=plex-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland|' ~/.local/share/applications/plex-desktop.desktop
+    sed -i 's|^Categories=.*|Categories=Multimedia;|' ~/.local/share/applications/plex-desktop.desktop
   '';
 
 }
