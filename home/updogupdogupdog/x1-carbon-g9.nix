@@ -27,4 +27,11 @@
     };
   };
 
+  home.activation.plexDesktopFix = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    echo "Patching plex-desktop.desktop..."
+    rm -f ~/.local/share/applications/plex-desktop.desktop
+
+    cp ${pkgs.plex-desktop}/share/applications/plex-desktop.desktop ~/.local/share/applications/plex-desktop.desktop
+    sed -i '/^Categories=/c\Categories=AudioVideo;Player;' ~/.local/share/applications/plex-desktop.desktop
+  '';
 }
