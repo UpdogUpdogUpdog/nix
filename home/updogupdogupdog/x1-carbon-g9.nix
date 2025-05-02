@@ -10,6 +10,7 @@
     plex-desktop
     spotify
     toggle-cam
+    bottles
   ];
 
   home.activation.removeDownloadsDir = lib.hm.dag.entryBefore [ "linkGeneration" ] ''
@@ -26,13 +27,4 @@
     };
   };
 
-  home.activation.plexDesktopFix = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    echo "Patching plex-desktop.desktop..."
-    rm -f ~/.local/share/applications/plex-desktop.desktop
-
-    cp ${pkgs.plex-desktop}/share/applications/plex-desktop.desktop ~/.local/share/applications/plex-desktop.desktop
-
-    sed -i 's|^Exec=.*|Exec=plex-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland|' ~/.local/share/applications/plex-desktop.desktop
-    sed -i '/^Categories=/c\Categories=Multimedia;' ~/.local/share/applications/plex-desktop.desktop
-  '';
 }
