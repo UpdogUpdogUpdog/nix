@@ -11,7 +11,7 @@
     spotify
     toggle-cam
     bottles
-    freerdp
+    krdc
   ];
 
   home.activation.removeDownloadsDir = lib.hm.dag.entryBefore [ "linkGeneration" ] ''
