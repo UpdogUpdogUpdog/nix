@@ -8,6 +8,7 @@
     Service = {
       ExecStart = "/usr/bin/env bash ${pkgs.toggle-cam}/bin/cam-status.sh";
       Restart = "always";
+      RestartSec = "15s";
     };
     Install = {
       WantedBy = [ "default.target" ];
