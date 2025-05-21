@@ -10,6 +10,7 @@ home.packages = with pkgs; [
   mission-center
   vscode
   kdePackages.kate
+  python3
 ];
 
 
