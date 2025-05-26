@@ -5,6 +5,7 @@ set -l host (hostname)
 set -l user (whoami)
 set -l do_nixos 1
 set -l do_home 1
+set -l upgrade 0
 set token_file /etc/opnix-token
 set gen_script ~/.local/bin/gen-opnix-token
 
@@ -34,10 +35,26 @@ for arg in $argv
             set do_home 0
         case --home
             set do_nixos 0
+        case --upgrade
+            set upgrade 1
         case '*'
-            echo "Usage: rebuild [--nixos|--home]"
+            echo "Usage: rebuild [--nixos|--home|--upgrade]"
             exit 1
     end
+end
+
+if test $upgrade -eq 1
+    echo "🚀 Upgrading flake inputs..."
+    cd $repo
+    nix flake update
+    echo "🔍 Flake metadata after update:"
+    nix flake metadata
+
+    set -l update_msg "$host: auto: flake inputs upgraded"
+    git add flake.lock
+    git commit -m "$update_msg"
+    and git push
+    cd -
 end
 
 echo "👀 Validating config before rebuild..."
