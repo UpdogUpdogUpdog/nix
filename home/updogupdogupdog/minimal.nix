@@ -5,7 +5,7 @@
 {
   home.username = "updogupdogupdog";
   home.homeDirectory = "/home/updogupdogupdog";
-  home.stateVersion = "24.11";
+  home.stateVersion = "25.05";
 
   programs.fish.enable = true;
 }
