@@ -6,7 +6,7 @@ home.packages = with pkgs; [
   _1password-gui
   brave
   kdePackages.isoimagewriter
-  kdialog
+  libsForQt5.kdialog
   mission-center
   vscode
   kdePackages.kate

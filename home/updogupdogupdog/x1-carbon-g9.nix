@@ -11,7 +11,7 @@
     spotify
     toggle-cam
     bottles
-    krdc
+    #krdc
   ];
 
   home.activation.removeDownloadsDir = lib.hm.dag.entryBefore [ "linkGeneration" ] ''

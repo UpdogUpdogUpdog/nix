@@ -240,7 +240,6 @@
 
   # mlocate
   services.locate.package = pkgs.mlocate;
-  services.locate.localuser = null;
   services.locate.enable = true;
 
   # This value determines the NixOS release from which the default
