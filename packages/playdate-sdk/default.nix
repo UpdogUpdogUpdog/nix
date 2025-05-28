@@ -8,7 +8,7 @@ stdenv.mkDerivation rec {
     url = "https://download.panic.com/playdate_sdk/Linux/PlaydateSDK-${version}.tar.gz";
     # Replace with different sha256 if replacing. run below in terminal to calculate
     #nix hash to-sri --type sha256 $(nix-prefetch-url --unpack https://download.panic.com/playdate_sdk/Linux/PlaydateSDK-latest.tar.gz)
-    sha256 = "sha256-XFWI0Q6AMbO+A8rLPDbmXg5fWWi8QHdQowuZF2x8lh4=";
+    sha256 = "sha256-Zc9J5np1a88pCHvktK7jUnNCtx/369dXfea2vJf3DWo=";
   };
 
   nativeBuildInputs = [ makeWrapper ];
