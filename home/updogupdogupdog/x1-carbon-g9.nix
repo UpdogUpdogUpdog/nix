@@ -11,7 +11,7 @@
     spotify
     toggle-cam
     bottles
-    krdc
+    kdePackages.krdc
     playdate-sdk
   ];
 

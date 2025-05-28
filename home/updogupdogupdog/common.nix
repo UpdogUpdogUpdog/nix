@@ -34,7 +34,7 @@
     enable = true;
     theme = {
       name = "Breeze-Dark";
-      package = pkgs.breeze-gtk;
+      package = pkgs.kdePackages.breeze-gtk;
     };
   };
 
