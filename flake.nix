@@ -47,6 +47,7 @@
     overlays.default = final: prev: {
       # Add any overlays you want to use here
       toggle-cam = final.callPackage ./packages/toggle-cam { };
+      playdate-sdk = final.callPackage ./packages/playdate-sdk { };
     };
 
     homeConfigurations = {
