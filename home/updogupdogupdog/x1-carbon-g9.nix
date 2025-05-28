@@ -11,7 +11,7 @@
     spotify
     toggle-cam
     bottles
-    #krdc
+    krdc
     playdate-sdk
   ];
 
