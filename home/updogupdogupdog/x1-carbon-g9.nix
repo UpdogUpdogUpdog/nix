@@ -12,6 +12,7 @@
     toggle-cam
     bottles
     #krdc
+    playdate-sdk
   ];
 
   home.activation.removeDownloadsDir = lib.hm.dag.entryBefore [ "linkGeneration" ] ''
