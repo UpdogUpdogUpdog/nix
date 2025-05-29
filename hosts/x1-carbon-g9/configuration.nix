@@ -63,6 +63,17 @@
     RuntimeMaxFileSize=10M
     SyncIntervalSec=30s
   '';
+
+  systemd.services.fprintd-resume-fix = {
+    description = "Restart fprintd after resume to re-bind USB reader";
+    after = [ "resume.target" "hibernate.target" "sleep.target" ];
+    wantedBy = [ "sleep.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.systemd}/bin/systemctl restart fprintd.service";
+    };
+  };
+
   
   # Cron that trims nvme weekly for better performance and longevity
   services.fstrim.enable = true;
