@@ -39,7 +39,16 @@
   };
 
 
-    
+  systemd.services.pam-jiggle = {
+    description = "Jiggle PAM into life post-resume to wake fprintd";
+    wantedBy = [ "post-resume.target" ];
+    before = [ "kscreenlocker_greet.service" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.sudo}/bin/sudo -u updogupdogupdog ${pkgs.coreutils}/bin/true";
+    };
+  };
+
   # Battery and power source profiles and throttling
   services.tlp =
    {
