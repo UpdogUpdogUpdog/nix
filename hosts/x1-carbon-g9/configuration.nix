@@ -30,16 +30,24 @@
     "d /data/Downloads 0755 updogupdogupdog users -"
   ];
 
-  # Enable Fingerprint
-  services.fprintd.enable = true;
-  security.pam.services = {
-    login.fprintAuth = false;
-    sudo.fprintAuth = true;
-    sddm.fprintAuth = false;
-    kde.fprintAuth = false;
-  };
+    # Enable Fingerprint
+    services.fprintd.enable = true;
+    security.pam.services = {
+      login.fprintAuth = false;
+      sudo.fprintAuth = true;
+      sddm.fprintAuth = false;
+      kde = {
+        fprintAuth = false;
+        rules.auth.pamdebug = {
+          control = "optional";
+          modulePath = "pam_exec.so";
+          args = [ "/run/current-system/sw/bin/logger" "pam: kde stack entered" ];
+          order = 9999;
+        };
+      };
+    };
 
-  
+    
   # Battery and power source profiles and throttling
   services.tlp =
    {
