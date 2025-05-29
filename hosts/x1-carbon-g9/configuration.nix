@@ -30,22 +30,14 @@
     "d /data/Downloads 0755 updogupdogupdog users -"
   ];
 
-    # Enable Fingerprint
-    services.fprintd.enable = true;
-    security.pam.services = {
-      login.fprintAuth = false;
-      sudo.fprintAuth = true;
-      sddm.fprintAuth = false;
-      kde = {
-        fprintAuth = false;
-        rules.auth.pamdebug = {
-          control = "optional";
-          modulePath = "pam_exec.so";
-          args = [ "/run/current-system/sw/bin/logger" "pam: kde stack entered" ];
-          order = 9999;
-        };
-      };
-    };
+  # Enable Fingerprint
+  services.fprintd.enable = true;
+  security.pam.services = {
+    login.fprintAuth = false;
+    sudo.fprintAuth = true;
+    kscreenlocker.fprintAuth = true;
+  };
+
 
     
   # Battery and power source profiles and throttling
@@ -72,17 +64,8 @@
     SyncIntervalSec=30s
   '';
 
-  systemd.services.fprintd-resume-fix = {
-    description = "Restart fprintd after resume to re-bind USB reader";
-    after = [ "resume.target" "hibernate.target" "sleep.target" ];
-    wantedBy = [ "sleep.target" ];
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "${pkgs.systemd}/bin/systemctl restart fprintd.service";
-    };
-  };
 
-  
+
   # Cron that trims nvme weekly for better performance and longevity
   services.fstrim.enable = true;
   
