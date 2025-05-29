@@ -30,14 +30,14 @@
     "d /data/Downloads 0755 updogupdogupdog users -"
   ];
 
-  # Fingerprint reader
-  services.fprintd.enable = true;
+  # Enable Fingerprint
   security.pam.services = {
     login.fprintAuth = false;
     sudo.fprintAuth = true;
-    sddm.fprintAuth = false;  # If you're using SDDM with KDE Plasma
-    kscreenlocker.fprintAuth = true;
+    sddm.fprintAuth = false;
+    kde.fprintAuth = true;
   };
+
   
   # Battery and power source profiles and throttling
   services.tlp =
