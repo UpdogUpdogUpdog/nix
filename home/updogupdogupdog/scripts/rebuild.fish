@@ -111,6 +111,19 @@ if test $do_home -eq 1
     home-manager switch --flake $repo#$user@$host 
 end
 
+echo "🧹 Cleaning up stale build artifacts and temp roots..."
+
+# Delete stray 'result' symlinks from repo
+find $repo -type l -name result -delete
+
+# Delete user-level result links (optional but typical)
+find ~ -type l -name result -delete
+
+# Remove auto GC roots pointing to temporary build paths (e.g. nixos-rebuild / home-manager)
+sudo find /nix/var/nix/gcroots/auto -type l \
+    -exec readlink -f {} \; | grep '^/tmp/' | \
+    xargs -r sudo rm -f
+
 # Prompt for commit message
 echo "Enter commit message [default: auto: successful rebuild on $host]: "
 read user_msg
