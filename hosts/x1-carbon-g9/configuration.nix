@@ -38,22 +38,6 @@
     kscreenlocker.fprintAuth = true;
   };
 
-
-  systemd.services.pam-forcefail = {
-    description = "Force PAM stack to engage by fake auth";
-    wantedBy = [ "post-resume.target" ];
-    before = [ "kscreenlocker_greet.service" ];
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "${pkgs.shadow}/bin/su" ;
-      ExecStartArgs = [ "-c" "exit 1" "updogupdogupdog" ];
-      StandardInput = "null";
-      StandardOutput = "journal";
-      StandardError = "journal";
-    };
-  };
-
-
   # Battery and power source profiles and throttling
   services.tlp =
    {
