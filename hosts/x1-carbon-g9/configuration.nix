@@ -33,10 +33,10 @@
   # Enable Fingerprint
   services.fprintd.enable = true;
   security.pam.services = {
-    login.fprintAuth = true;
+    login.fprintAuth = false;
     sudo.fprintAuth = true;
-    sddm.fprintAuth = true;
-    kde.fprintAuth = true;
+    sddm.fprintAuth = false;
+    kde.fprintAuth = false;
   };
 
   
