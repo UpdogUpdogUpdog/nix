@@ -67,6 +67,7 @@
   # Cron that trims nvme weekly for better performance and longevity
   services.fstrim.enable = true;
   
+  
   #Home manager doesn't like programs?
   programs.steam = {
       enable = true;

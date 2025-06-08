@@ -13,6 +13,7 @@
     bottles
     kdePackages.krdc
     playdate-sdk
+    nfs-utils
   ];
 
   home.activation.removeDownloadsDir = lib.hm.dag.entryBefore [ "linkGeneration" ] ''
