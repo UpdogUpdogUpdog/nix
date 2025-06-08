@@ -115,6 +115,28 @@
     size = 8192;
   }];
 
+  # Enable NFS
+  boot.supportedFilesystems = [ "nfs" ];
+  services.rpcbind.enable = true; # needed for NFS
+
+  systemd.mounts = [{
+    type = "nfs";
+    mountConfig = {
+      Options = "hard,timeo=50,retrans=5,relatime,rsize=1048576,wsize=1048576";
+    };
+    what = "192.168.1.36:/mnt/user/LIBRARY01";
+    where = "/mnt/LIBRARY01";
+  }];
+
+  systemd.automounts = [{
+    wantedBy = [ "multi-user.target" ];
+    automountConfig = {
+      TimeoutIdleSec = "600";
+    };
+    where = "/mnt/LIBRARY01";
+  }];
+
+
   environment.systemPackages = with pkgs; [
     fish
     gh
