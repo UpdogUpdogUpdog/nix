@@ -132,6 +132,7 @@
       "x-systemd.automount"
       "noauto"
     ];
+    systemd.mountConfig.TimeoutUnmountSec = "5s";
   };
 
 
@@ -150,6 +151,7 @@
     screen
     vim
     wget
+    nfs-utils
   ];
 
   environment.etc."brave/policies/managed/1password.json".text = builtins.toJSON {
