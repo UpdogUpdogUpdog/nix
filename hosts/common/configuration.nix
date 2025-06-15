@@ -132,9 +132,12 @@
       "x-systemd.automount"
       "noauto"
     ];
-    systemd.mountConfig.TimeoutUnmountSec = "5s";
   };
 
+  systemd.services."mnt-LIBRARY01.mount" = {
+    overrideStrategy = "asDropin";
+    serviceConfig.TimeoutStopSec = "5s";
+  };
 
   environment.systemPackages = with pkgs; [
     fish
