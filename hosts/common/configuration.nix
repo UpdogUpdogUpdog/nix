@@ -119,22 +119,20 @@
   boot.supportedFilesystems = [ "nfs" ];
   services.rpcbind.enable = true; # needed for NFS
 
-  systemd.mounts = [{
-    type = "nfs";
-    mountConfig = {
-      Options = "hard,timeo=50,retrans=5,relatime,rsize=1048576,wsize=1048576";
-    };
-    what = "192.168.1.36:/mnt/user/LIBRARY01";
-    where = "/mnt/LIBRARY01";
-  }];
-
-  systemd.automounts = [{
-    wantedBy = [ "multi-user.target" ];
-    automountConfig = {
-      TimeoutIdleSec = "600";
-    };
-    where = "/mnt/LIBRARY01";
-  }];
+  fileSystems."/mnt/LIBRARY01" = {
+    device = "192.168.1.36:/mnt/user/LIBRARY01";
+    fsType = "nfs";
+    options = [
+      "hard"
+      "timeo=50"
+      "retrans=5"
+      "relatime"
+      "rsize=1048576"
+      "wsize=1048576"
+      "x-systemd.automount"
+      "noauto"
+    ];
+  };
 
 
   environment.systemPackages = with pkgs; [
