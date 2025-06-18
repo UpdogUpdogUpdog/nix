@@ -136,7 +136,16 @@
 
   systemd.services."mnt-LIBRARY01.mount" = {
     overrideStrategy = "asDropin";
-    serviceConfig.TimeoutStopSec = "5s";
+    serviceConfig = {
+      TimeoutStopSec = "5s";
+      StartLimitIntervalSec = 60;
+      StartLimitBurst = 3;
+    };  
+  };
+
+  systemd.services."mnt-LIBRARY01.automount" = {
+    wants = [ "network-online.target" ];
+    after = [ "network-online.target" ];
   };
 
   environment.systemPackages = with pkgs; [
