@@ -143,10 +143,14 @@
     };  
   };
 
-  systemd.services."mnt-LIBRARY01.automount" = {
-    wants = [ "network-online.target" ];
-    after = [ "network-online.target" ];
-  };
+  systemd.automounts = [
+    {
+      where = "/mnt/LIBRARY01";
+      wantedBy = [ "remote-fs.target" ];
+      requires = [ "network-online.target" ];
+      after = [ "network-online.target" ];
+    }
+  ];
 
   environment.systemPackages = with pkgs; [
     fish
