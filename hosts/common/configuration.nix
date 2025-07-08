@@ -123,14 +123,15 @@
     device = "192.168.1.36:/mnt/user/LIBRARY01";
     fsType = "nfs";
     options = [
-      "hard"
-      "timeo=50"
-      "retrans=5"
+      "soft"
+      "timeo=5"
+      "retrans=2"
       "relatime"
       "rsize=1048576"
       "wsize=1048576"
       "x-systemd.automount"
-      "noauto"
+      "x-systemd.idle-timeout=60"    
+      "nofail"
     ];
   };
 
