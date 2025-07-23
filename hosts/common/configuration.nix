@@ -132,6 +132,10 @@
       "x-systemd.automount"
       "x-systemd.idle-timeout=60"    
       "nofail"
+      "nfsvers=3"
+      "uid=99"
+      "gid=100"
+      "nolock"
     ];
   };
 
