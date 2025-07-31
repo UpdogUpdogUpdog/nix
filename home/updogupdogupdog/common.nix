@@ -53,12 +53,13 @@
   programs.onepassword-secrets = {
     enable = true;
     secrets = {
-      gh_sshkey = {
+      ghsshkey = {
         # Paths are relative to home directory
           path = ".ssh/github-id_ed25519";
           reference = "op://SSH Keys/Updog GitHub SSH Key/private key";
       };
-      smb_credentials = {
+      
+      smbcredentials = {
         path = ".secrets/smb_credentials";
         reference = "op://SSH Keys/smb_credentials/credentials";
       };
