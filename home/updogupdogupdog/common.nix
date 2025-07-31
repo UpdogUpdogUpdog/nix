@@ -60,7 +60,7 @@
       {
         path = ".secrets/smb_credentials";
         reference = "op://SSH Keys/smb_credentials/credentials";
-        mode = "0644";
+        #useless comment
       }
     ];
   };
