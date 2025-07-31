@@ -13,7 +13,7 @@
       inputs.home-manager.follows = "home-manager";
     };
     opnix = {
-      url = "github:brizzbuzz/opnix";
+      url = "github:brizzbuzz/opnix/v0.5.0";
     };
   };
 
