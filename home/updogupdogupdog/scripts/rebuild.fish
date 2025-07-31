@@ -6,8 +6,8 @@ set -l user (whoami)
 set -l do_nixos 1
 set -l do_home 1
 set -l upgrade 0
-set -l token_file /etc/opnix-token
-set -l gen_script ~/.local/bin/gen-opnix-token
+set token_file /etc/opnix-token
+set gen_script ~/.local/bin/gen-opnix-token
 set -l work_branch dev
 
 # Parse args
