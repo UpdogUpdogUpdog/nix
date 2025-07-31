@@ -86,6 +86,7 @@
       },
       "original": {
         "owner": "brizzbuzz",
+        "ref": "v0.5.0",
         "repo": "opnix",
         "type": "github"
       }
