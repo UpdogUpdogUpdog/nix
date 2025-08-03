@@ -55,11 +55,11 @@
     secrets = [
       {
         path = ".ssh/github-id_ed25519";
-        reference = "op://SSH Keys/Updog GitHub SSH Key/private key";
+        reference = "op://SSH Keys/Updog GitHub SSH Key/private key"
       }
       {
         path = ".secrets/smb_credentials";
-        reference = "op://SSH Keys/smb_credentials/credentials";
+        reference = "op://SSH Keys/smb_credentials/credentials"
       } #comment for rebuild
     ];
   };
