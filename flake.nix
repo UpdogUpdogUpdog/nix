@@ -13,7 +13,7 @@
       inputs.home-manager.follows = "home-manager";
     };
     opnix = {
-      url = "github:brizzbuzz/opnix/e7038cc4432122524e9d964932444510ab681e9a"; #v0.5.0
+      url = "github:brizzbuzz/opnix/e7038cc4432122524e9d964932444510ab681e9a"; #v0.5.0 pin
     };
   };
 
